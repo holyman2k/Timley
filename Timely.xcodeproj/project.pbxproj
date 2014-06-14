@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6F2B72E7194D166D0076AB18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B72E6194D166D0076AB18 /* AppDelegate.swift */; };
+		6F2B72EA194D166D0076AB18 /* Timely.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B72E8194D166D0076AB18 /* Timely.xcdatamodeld */; };
+		6F2B72EC194D166D0076AB18 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F2B72EB194D166D0076AB18 /* Images.xcassets */; };
+		6F2B72F8194D166D0076AB18 /* TimelyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B72F7194D166D0076AB18 /* TimelyTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6F2B72F2194D166D0076AB18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F2B72D9194D166D0076AB18 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F2B72E0194D166D0076AB18;
+			remoteInfo = Timely;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6F2B72E1194D166D0076AB18 /* Timely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timely.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F2B72E5194D166D0076AB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F2B72E6194D166D0076AB18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6F2B72E9194D166D0076AB18 /* Timely.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Timely.xcdatamodel; sourceTree = "<group>"; };
+		6F2B72EB194D166D0076AB18 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6F2B72F1194D166D0076AB18 /* TimelyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimelyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F2B72F6194D166D0076AB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F2B72F7194D166D0076AB18 /* TimelyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelyTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6F2B72DE194D166D0076AB18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F2B72EE194D166D0076AB18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F2B72D8194D166D0076AB18 = {
+			isa = PBXGroup;
+			children = (
+				6F2B72E3194D166D0076AB18 /* Timely */,
+				6F2B72F4194D166D0076AB18 /* TimelyTests */,
+				6F2B72E2194D166D0076AB18 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6F2B72E2194D166D0076AB18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6F2B72E1194D166D0076AB18 /* Timely.app */,
+				6F2B72F1194D166D0076AB18 /* TimelyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6F2B72E3194D166D0076AB18 /* Timely */ = {
+			isa = PBXGroup;
+			children = (
+				6F2B72E6194D166D0076AB18 /* AppDelegate.swift */,
+				6F2B72EB194D166D0076AB18 /* Images.xcassets */,
+				6F2B72E8194D166D0076AB18 /* Timely.xcdatamodeld */,
+				6F2B72E4194D166D0076AB18 /* Supporting Files */,
+			);
+			path = Timely;
+			sourceTree = "<group>";
+		};
+		6F2B72E4194D166D0076AB18 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F2B72E5194D166D0076AB18 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6F2B72F4194D166D0076AB18 /* TimelyTests */ = {
+			isa = PBXGroup;
+			children = (
+				6F2B72F7194D166D0076AB18 /* TimelyTests.swift */,
+				6F2B72F5194D166D0076AB18 /* Supporting Files */,
+			);
+			path = TimelyTests;
+			sourceTree = "<group>";
+		};
+		6F2B72F5194D166D0076AB18 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F2B72F6194D166D0076AB18 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6F2B72E0194D166D0076AB18 /* Timely */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F2B72FB194D166D0076AB18 /* Build configuration list for PBXNativeTarget "Timely" */;
+			buildPhases = (
+				6F2B72DD194D166D0076AB18 /* Sources */,
+				6F2B72DE194D166D0076AB18 /* Frameworks */,
+				6F2B72DF194D166D0076AB18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Timely;
+			productName = Timely;
+			productReference = 6F2B72E1194D166D0076AB18 /* Timely.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6F2B72F0194D166D0076AB18 /* TimelyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F2B72FE194D166D0076AB18 /* Build configuration list for PBXNativeTarget "TimelyTests" */;
+			buildPhases = (
+				6F2B72ED194D166D0076AB18 /* Sources */,
+				6F2B72EE194D166D0076AB18 /* Frameworks */,
+				6F2B72EF194D166D0076AB18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6F2B72F3194D166D0076AB18 /* PBXTargetDependency */,
+			);
+			name = TimelyTests;
+			productName = TimelyTests;
+			productReference = 6F2B72F1194D166D0076AB18 /* TimelyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6F2B72D9194D166D0076AB18 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Charlie Wu";
+				TargetAttributes = {
+					6F2B72E0194D166D0076AB18 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					6F2B72F0194D166D0076AB18 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 6F2B72E0194D166D0076AB18;
+					};
+				};
+			};
+			buildConfigurationList = 6F2B72DC194D166D0076AB18 /* Build configuration list for PBXProject "Timely" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6F2B72D8194D166D0076AB18;
+			productRefGroup = 6F2B72E2194D166D0076AB18 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6F2B72E0194D166D0076AB18 /* Timely */,
+				6F2B72F0194D166D0076AB18 /* TimelyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6F2B72DF194D166D0076AB18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F2B72EC194D166D0076AB18 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F2B72EF194D166D0076AB18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6F2B72DD194D166D0076AB18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F2B72E7194D166D0076AB18 /* AppDelegate.swift in Sources */,
+				6F2B72EA194D166D0076AB18 /* Timely.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F2B72ED194D166D0076AB18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F2B72F8194D166D0076AB18 /* TimelyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6F2B72F3194D166D0076AB18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6F2B72E0194D166D0076AB18 /* Timely */;
+			targetProxy = 6F2B72F2194D166D0076AB18 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6F2B72F9194D166D0076AB18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6F2B72FA194D166D0076AB18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6F2B72FC194D166D0076AB18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Timely/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6F2B72FD194D166D0076AB18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Timely/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6F2B72FF194D166D0076AB18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Timely.app/Timely";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TimelyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		6F2B7300194D166D0076AB18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Timely.app/Timely";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TimelyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6F2B72DC194D166D0076AB18 /* Build configuration list for PBXProject "Timely" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F2B72F9194D166D0076AB18 /* Debug */,
+				6F2B72FA194D166D0076AB18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F2B72FB194D166D0076AB18 /* Build configuration list for PBXNativeTarget "Timely" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F2B72FC194D166D0076AB18 /* Debug */,
+				6F2B72FD194D166D0076AB18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6F2B72FE194D166D0076AB18 /* Build configuration list for PBXNativeTarget "TimelyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F2B72FF194D166D0076AB18 /* Debug */,
+				6F2B7300194D166D0076AB18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6F2B72E8194D166D0076AB18 /* Timely.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6F2B72E9194D166D0076AB18 /* Timely.xcdatamodel */,
+			);
+			currentVersion = 6F2B72E9194D166D0076AB18 /* Timely.xcdatamodel */;
+			path = Timely.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6F2B72D9194D166D0076AB18 /* Project object */;
+}
