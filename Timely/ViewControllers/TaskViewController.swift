@@ -64,14 +64,17 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
     }
 
     @IBAction func done(sender : AnyObject) {
-        var newTask:Task = Task.createInContext(context);
-        newTask.name = nameField.text;
-        newTask.cycle = Int(repeatSteper.value)
-        newTask.dueDate = task!.dueDate.addTimeInterval(repeatSteper.value * 60*60*24) as NSDate
-        newTask.generateTaskId();
-
-        context.deleteObject(self.task);
-        context.save(nil)
+        if let cycle = task?.cycle.integerValue {
+            if cycle > 0 {
+                var newTask:Task = Task.createInContext(context);
+                newTask.name = nameField.text;
+                newTask.cycle = Int(repeatSteper.value)
+                newTask.dueDate = task!.dueDate.addTimeInterval(repeatSteper.value * 60*60*24) as NSDate
+                newTask.generateTaskId();
+            }
+            context.deleteObject(self.task);
+            context.save(nil)
+        }
 
         self.navigationController.popViewControllerAnimated(true);
     }
