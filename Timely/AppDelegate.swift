@@ -16,13 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
 
-//        var version:NSString = UIDevice.currentDevice().systemVersion as NSString;
-//
-//        if  version.doubleValue >= 8 {
-//            NSLog("ios 8")
-//            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil
-//            ))
-//        }
+        DelegateBridge().bridgeInitalizer();
 
         TimelyContext.managed()
         return true
@@ -44,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+        NSNotificationCenter.defaultCenter().postNotificationName("appDidAppear", object: nil)
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -51,6 +47,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         TimelyContext.managed().saveContext()
     }
+
+//    func application(application: UIApplication!, didReceiveLocalNotification notification: UILocalNotification!) {
+////        var state = application.applicationState;
+////        if state == UIApplicationState.Active {
+//            var alertView = UIAlertView(title: "Reminder", message: notification.alertBody, delegate: nil, cancelButtonTitle: "OK");
+////        }
+//    }
 
 }
 

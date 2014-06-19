@@ -16,15 +16,15 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
     @IBOutlet var repeatSteper : UIStepper
     @IBOutlet var deleteButton : UIButton
     @IBOutlet var doneButton : UIButton
-    var task: Task?
-    var context:TimelyContext
 
+    var task: Task?
+    var context:TimelyContext {
+        return TimelyContext.managed();
+    }
     
     init(coder aDecoder: NSCoder!) {
-        context = TimelyContext.managed();
         super.init(coder: aDecoder)
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,16 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
     }
 
     @IBAction func saveTask(sender : AnyObject) {
+
+        if nameField.text.isEmpty {
+            nameField.layer.borderColor = UIColor(red: 0.77, green: 0.22, blue: 0.21, alpha: 1).CGColor
+            nameField.layer.borderWidth = 0.5
+            nameField.layer.cornerRadius = 8
+            return
+        } else {
+            nameField.leftView = UIView(frame: CGRectMake(0, 0, 8, 1));
+            nameField.layer.borderWidth = 0
+        }
 
         if task == nil {
             task = Task.createInContext(context) as Task
@@ -73,7 +83,10 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
                 newTask.dueDate = task!.dueDate.addTimeInterval(repeatSteper.value * 60*60*24) as NSDate
                 newTask.generateTaskId();
             }
-            context.deleteObject(self.task);
+
+            self.task!.removeNotification()
+            context.deleteObject(self.task)
+            self.task!.resetBadge()
             context.save(nil)
         }
 
@@ -111,8 +124,10 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
 
     func deleteTask() {
 
-        self.task!.removeNotification();
+        self.task!.removeNotification()
         context.deleteObject(self.task)
+        self.task!.resetBadge()
+
         context.save(nil)
 
         self.navigationController.popViewControllerAnimated(true);

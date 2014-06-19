@@ -21,10 +21,15 @@ extension Task {
         notification.alertAction = "OK"
         notification.alertBody = "\(name) is due"
         notification.timeZone = NSTimeZone.defaultTimeZone()
+        notification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1;
 
         notification.userInfo = ["task-id" : taskId];
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
         NSLog("create notification for task \(name)")
+    }
+
+    func isDue() -> Bool {
+        return dueDate.timeIntervalSince1970 < NSDate.date().timeIntervalSince1970
     }
 
     func removeNotification() {
@@ -37,5 +42,16 @@ extension Task {
                 }
             }
         }
+    }
+
+    func resetBadge() {
+        var context = self.managedObjectContext
+        var predicate = NSPredicate(format: "dueDate < %@", NSDate.date())
+        var request = Task.fetchRequest(nil, predicate: predicate);
+
+        var count = context.countForFetchRequest(request, error: nil)
+        NSLog("task due \(count)")
+        UIApplication.sharedApplication().applicationIconBadgeNumber = count;
+        
     }
 }

@@ -18,7 +18,7 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
     init(coder aDecoder: NSCoder!)  {
 
         context = TimelyContext.managed();
-        var fetchRequest = Task.fetchRequest([NSSortDescriptor(key: "name", ascending: true)], predicate: nil)
+        var fetchRequest = Task.fetchRequest([NSSortDescriptor(key: "dueDate", ascending: true)], predicate: nil)
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil);
         super.init(coder: aDecoder);
 
@@ -27,14 +27,12 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTable", name: "appDidAppear", object: nil);
         fetchedResultsController.performFetch(nil);
+    }
+
+    func reloadTable() {
+        self.tableView.reloadData()
     }
 
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
@@ -55,7 +53,7 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
             cell.textLabel!.text = task.name;
             cell.detailTextLabel!.text = "due: \(task.dueDate.dateTimeStringLong())"
 
-            if (task.dueDate.timeIntervalSince1970 < NSDate.date().timeIntervalSince1970) {
+            if task.isDue() {
                 cell.textLabel.textColor = UIColor(red: 0.77, green: 0.22, blue: 0.21, alpha: 1)
 
             } else {
@@ -79,10 +77,13 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
                 }
             }
         }
-
     }
 
     override func shouldAutorotate() -> Bool  {
         return false
+    }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self);
     }
 }
