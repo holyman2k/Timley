@@ -17,6 +17,7 @@
 		6F2B7314194D1D3F0076AB18 /* TimelyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B7313194D1D3F0076AB18 /* TimelyContext.swift */; };
 		6F4E9D77194E8457003ADA8A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E9D76194E8457003ADA8A /* DateExtension.swift */; };
 		6F9FC398194D233800A0C9C5 /* ManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FC397194D233800A0C9C5 /* ManagedObjectExtension.swift */; };
+		6FA78EA1195008EF00557863 /* Easter-Bell-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FA78EA0195008EF00557863 /* Easter-Bell-icon.png */; };
 		6FD444AD194D886300868FE7 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD444AC194D886300868FE7 /* TaskViewController.swift */; };
 		6FEC35C0194ECC9E002D374C /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEC35BF194ECC9E002D374C /* Task.m */; };
 		6FEC35C4194ED181002D374C /* TaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEC35C3194ED181002D374C /* TaskExtension.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F0E147219501C0B008C7438 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		6F214EC9194E593800F66BF6 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Domains/Task.swift; sourceTree = "<group>"; };
 		6F2B72E1194D166D0076AB18 /* Timely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F2B72E5194D166D0076AB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		6F2B7313194D1D3F0076AB18 /* TimelyContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelyContext.swift; path = Extensions/TimelyContext.swift; sourceTree = "<group>"; };
 		6F4E9D76194E8457003ADA8A /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = Extensions/DateExtension.swift; sourceTree = "<group>"; };
 		6F9FC397194D233800A0C9C5 /* ManagedObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectExtension.swift; path = Extensions/ManagedObjectExtension.swift; sourceTree = "<group>"; };
+		6FA78EA0195008EF00557863 /* Easter-Bell-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Easter-Bell-icon.png"; sourceTree = "<group>"; };
 		6FD444AC194D886300868FE7 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskViewController.swift; path = ViewControllers/TaskViewController.swift; sourceTree = "<group>"; };
 		6FEC35BE194ECC9E002D374C /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = Domains/Task.h; sourceTree = "<group>"; };
 		6FEC35BF194ECC9E002D374C /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = Domains/Task.m; sourceTree = "<group>"; };
@@ -77,6 +80,8 @@
 		6F2B72D8194D166D0076AB18 = {
 			isa = PBXGroup;
 			children = (
+				6F0E147219501C0B008C7438 /* MyPlayground.playground */,
+				6FA78E9F195008E500557863 /* Assets */,
 				6F2B72E3194D166D0076AB18 /* Timely */,
 				6F2B72F4194D166D0076AB18 /* TimelyTests */,
 				6F2B72E2194D166D0076AB18 /* Products */,
@@ -180,6 +185,14 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		6FA78E9F195008E500557863 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				6FA78EA0195008EF00557863 /* Easter-Bell-icon.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -260,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FA78EA1195008EF00557863 /* Easter-Bell-icon.png in Resources */,
 				6F2B72EC194D166D0076AB18 /* Images.xcassets in Resources */,
 				6F2B7302194D16890076AB18 /* Storyboard.storyboard in Resources */,
 			);

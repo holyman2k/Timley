@@ -24,6 +24,7 @@ extension Task {
 
         notification.userInfo = ["task-id" : taskId];
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        NSLog("create notification for task \(name)")
     }
 
     func removeNotification() {
@@ -32,6 +33,7 @@ extension Task {
                 var note = notification as UILocalNotification
                 if note.userInfo["task-id"] as String == taskId {
                     UIApplication.sharedApplication().cancelLocalNotification(note)
+                    NSLog("remove notification for task \(name)")
                 }
             }
         }

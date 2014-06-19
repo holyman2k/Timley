@@ -56,8 +56,9 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
             t.name = nameField.text;
             t.dueDate = dueDatePicker.date;
             t.cycle = Int(repeatSteper.value)
-            t.generateTaskId();
-            context.save(nil);
+            t.generateTaskId()
+            context.save(nil)
+            t.removeNotification()
             t.createNotification()
         }
         self.navigationController.popViewControllerAnimated(true);
