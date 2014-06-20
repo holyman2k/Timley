@@ -15,6 +15,8 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
 
     var context:TimelyContext
 
+    let addIcon = UIImageView()
+
     init(coder aDecoder: NSCoder!)  {
 
         context = TimelyContext.managed();
@@ -23,6 +25,16 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
         super.init(coder: aDecoder);
 
         fetchedResultsController.delegate = self;
+    }
+
+    override func viewWillLayoutSubviews() {
+
+        let iconSize = 20.0
+        let iconX = (self.view.frame.size.width - iconSize) / 2
+
+        addIcon.frame = CGRectMake(iconX, -50, iconSize, iconSize)
+        addIcon.image = UIImage(named: "add")
+        view.addSubview(addIcon);
     }
     
     override func viewDidLoad() {
