@@ -29,8 +29,8 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
 
     override func viewWillLayoutSubviews() {
 
-        let iconSize = 20.0
-        let iconX = (self.view.frame.size.width - iconSize) / 2
+        let iconSize:CGFloat = 20.0
+        let iconX:CGFloat = CGFloat((Double(view.frame.size.width) - Double(iconSize)) / 2.0)
 
         addIcon.frame = CGRectMake(iconX, -50, iconSize, iconSize)
         addIcon.image = UIImage(named: "add")
@@ -60,7 +60,7 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
 
             var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
             cell.textLabel!.text = task.name;
-            cell.detailTextLabel!.text = "due: \(task.dueDate.dateTimeStringLong())"
+            cell.detailTextLabel!.text = task.dueDateString()
 
             if task.isDue() {
                 cell.textLabel.textColor = UIColor(red: 0.77, green: 0.22, blue: 0.21, alpha: 1)

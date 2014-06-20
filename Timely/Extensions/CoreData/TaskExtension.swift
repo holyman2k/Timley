@@ -54,4 +54,27 @@ extension Task {
         UIApplication.sharedApplication().applicationIconBadgeNumber = count;
         
     }
+
+    class func dueDateString(date:NSDate?) -> String {
+        if let dueDate = date {
+            return "Due: \(dueDate.dateTimeStringLong())"
+        } else {
+            return "Due Date"
+        }
+    }
+
+    class func repeatString(days:Int) -> String {
+
+        var postfix = days > 1 ? "s" : ""
+        return days > 0 ? "Every \(days) day\(postfix)" : "Never repeat"
+    }
+
+    func dueDateString() -> String {
+        return Task.dueDateString(dueDate)
+    }
+
+    func repeatString() -> String {
+        
+        return Task.repeatString(cycle.integerValue)
+    }
 }
