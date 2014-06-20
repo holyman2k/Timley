@@ -24,6 +24,7 @@ extension TimelyTableViewController {
             }
         }
     }
+
     override func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
         if addIcon.alpha == 1 {
             self.performSegueWithIdentifier("add", sender: self)

@@ -133,13 +133,14 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
         self.navigationController.popViewControllerAnimated(true);
     }
 
-
     func repeatString(days:Int) -> String {
+
         var postfix = days > 1 ? "s" : ""
         return days > 0 ? "Every \(days) day\(postfix)" : "Never repeat"
     }
 
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
+
         textField.resignFirstResponder()
         return true;
     }

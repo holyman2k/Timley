@@ -38,13 +38,10 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTable", name: "appDidAppear", object: nil);
-        fetchedResultsController.performFetch(nil);
-    }
 
-    func reloadTable() {
-        self.tableView.reloadData()
+        super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self.tableView, selector: "reloadData", name: "appDidAppear", object: nil);
+        fetchedResultsController.performFetch(nil);
     }
 
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
@@ -90,11 +87,6 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
             }
         }
     }
-
-    override func shouldAutorotate() -> Bool  {
-        return false
-    }
-
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self);
     }
