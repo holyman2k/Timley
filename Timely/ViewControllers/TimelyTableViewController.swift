@@ -33,7 +33,7 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
         let iconX:CGFloat = CGFloat((Double(view.frame.size.width) - Double(iconSize)) / 2.0)
 
         addIcon.frame = CGRectMake(iconX, -50, iconSize, iconSize)
-        addIcon.image = UIImage(named: "add")
+        addIcon.image = UIImage(named: "add").imageWithRenderingMode(.AlwaysTemplate)
         view.addSubview(addIcon);
     }
     
