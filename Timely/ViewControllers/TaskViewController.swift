@@ -35,9 +35,14 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
 
         if let t = task {
             nameField.text = t.name
-            dueDatePicker.date = t.dueDate
-            dueDate = t.dueDate
-            dueDateLabel.text = t.dueDateString()
+            if let taskDueDate = t.dueDate {
+                dueDatePicker.date = t.dueDate
+                dueDate = t.dueDate
+                dueDateLabel.text = t.dueDateString()
+            } else {
+                dueDateLabel.text = "Due Date"
+            }
+
             repeatLabel.text = t.repeatString()
             repeatSteper.value = t.cycle.doubleValue
 
@@ -46,6 +51,13 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
             doneButton.hidden = true
         }
         dueDateClearButton.hidden = true
+    }
+
+    override func viewDidAppear(animated: Bool)  {
+        super.viewDidAppear(animated)
+        if task == nil {
+            nameField.becomeFirstResponder()
+        }
     }
 
     @IBAction func onRepeatSteperChange(sender : UIStepper) {
@@ -94,7 +106,7 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
 
             self.task!.removeNotification()
             context.deleteObject(self.task)
-            self.task!.resetBadge()
+            Task.resetBadgeInContext(self.context)
             context.save(nil)
         }
 
@@ -132,6 +144,7 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
     @IBAction func dueDatePickerChanged(sender: UIDatePicker) {
         dueDate = sender.date;
         dueDateLabel.text = Task.dueDateString(dueDate)
+        dueDateClearButton.hidden = false
     }
 
     @IBAction func clearDueDate(sender: AnyObject) {
@@ -143,7 +156,7 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
 
         self.task!.removeNotification()
         context.deleteObject(self.task)
-        self.task!.resetBadge()
+        Task.resetBadgeInContext(self.context)
 
         context.save(nil)
 
@@ -162,7 +175,7 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
             self.dueDateLabel.textColor = self.dueDateLabel.textColor == self.view.tintColor ? UIColor(white: 0.36, alpha: 1) : self.view.tintColor;
             var datePickerIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
 
-            dueDateClearButton.hidden = self.dueDateLabel.textColor != self.view.tintColor
+            dueDateClearButton.hidden = self.dueDateLabel.textColor != self.view.tintColor && self.dueDate != nil
             tableView.beginUpdates()
             tableView.reloadData()
             tableView.endUpdates()
@@ -170,27 +183,15 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
     }
 
     override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
-//        switch (indexPath.row) {
-//        case 0:
-//            return 80.0
-//        case 1:
-//            return 30.0
-//        case 2:
-//            return dueDateLabel.textColor == view.tintColor ? 200.0 : 0
-//        case 3:
-//            return dueDate != nil || dueDateLabel.textColor == view.tintColor ? 44: 0
-//        default:
-//            return 44
-//        }
         switch (indexPath.row) {
         case 0:
             return 80.0
         case 1:
             return 30.0
         case 2:
-            return 200.0
+            return dueDateLabel.textColor == view.tintColor ? 200.0 : 0
         case 3:
-            return 44
+            return dueDate != nil || dueDateLabel.textColor == view.tintColor ? 44: 0
         default:
             return 44
         }

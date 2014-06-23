@@ -15,21 +15,25 @@ extension Task {
     }
 
     func createNotification() {
-        
-        var notification = UILocalNotification();
-        notification.fireDate = dueDate;
-        notification.alertAction = "OK"
-        notification.alertBody = "\(name) is due"
-        notification.timeZone = NSTimeZone.defaultTimeZone()
-        notification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1;
+        if let due = dueDate {
+            var notification = UILocalNotification();
+            notification.fireDate = dueDate;
+            notification.alertAction = "OK"
+            notification.alertBody = "\(name) is due"
+            notification.timeZone = NSTimeZone.defaultTimeZone()
+            notification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1;
 
-        notification.userInfo = ["task-id" : taskId];
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        NSLog("create notification for task \(name)")
+            notification.userInfo = ["task-id" : taskId];
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            NSLog("create notification for task \(name) fire on \(due.dateTimeStringLong())")
+        }
     }
 
     func isDue() -> Bool {
-        return dueDate.timeIntervalSince1970 < NSDate.date().timeIntervalSince1970
+        if let due = dueDate {
+            return dueDate.timeIntervalSince1970 < NSDate.date().timeIntervalSince1970
+        }
+        return false
     }
 
     func removeNotification() {
@@ -44,8 +48,7 @@ extension Task {
         }
     }
 
-    func resetBadge() {
-        var context = self.managedObjectContext
+    class func resetBadgeInContext(context:NSManagedObjectContext) {
         var predicate = NSPredicate(format: "dueDate < %@", NSDate.date())
         var request = Task.fetchRequest(nil, predicate: predicate);
 
@@ -55,11 +58,11 @@ extension Task {
         
     }
 
-    class func dueDateString(date:NSDate?) -> String {
+    class func dueDateString(date:NSDate?) -> String? {
         if let dueDate = date {
             return "Due: \(dueDate.dateTimeStringLong())"
         } else {
-            return "Due Date"
+            return nil
         }
     }
 
@@ -69,7 +72,7 @@ extension Task {
         return days > 0 ? "Every \(days) day\(postfix)" : "Never repeat"
     }
 
-    func dueDateString() -> String {
+    func dueDateString() -> String? {
         return Task.dueDateString(dueDate)
     }
 
