@@ -10,7 +10,7 @@ import Foundation
 
 extension NSDate {
     func dateTimeStringLong() -> String {
-        return dateString("MMM d, 'at' h:mm a")
+        return dateString("MMMM d, 'at' h:mm a")
     }
 
     func dateString(pattern:String) -> String {

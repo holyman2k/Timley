@@ -1,8 +1,9 @@
 // Playground - noun: a place where people can play
 
 import Cocoa
-import XCPlayground
-import CoreData
+import Swift
+//import XCPlayground
+//import CoreData
 //
 //let color = UIColor.blackColor()
 //
@@ -36,8 +37,49 @@ import CoreData
 //
 //num
 
-dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-    println("hello")
-})
+//dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+//    println("hello")
+//})
+//
+//XCPExecutionShouldContinueIndefinitely()
 
-XCPExecutionShouldContinueIndefinitely()
+class Account :Printable, Equatable {
+    let name:NSString
+
+    init(_ name:String) {
+        self.name = name
+    }
+
+
+    var description: String {
+    get {
+        return "hello"
+    }
+    }
+}
+
+func ==(lhs: Account, rhs: Account) -> Bool {
+    return lhs.name == rhs.name
+}
+
+let me = Account("Charlie")
+
+let you = Account("You")
+
+println(me)
+
+let match = me == you
+
+match
+
+
+
+
+
+
+
+
+
+
+
+

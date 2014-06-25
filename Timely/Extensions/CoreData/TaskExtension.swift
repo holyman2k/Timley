@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension Task {
+extension Task :Printable, Equatable {
 
     func generateTaskId() {
         taskId = NSUUID().UUIDString
@@ -26,6 +26,8 @@ extension Task {
             notification.userInfo = ["task-id" : taskId];
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             NSLog("create notification for task \(name) fire on \(due.dateTimeStringLong())")
+        } else {
+            NSLog("did not create notification")
         }
     }
 
@@ -53,7 +55,7 @@ extension Task {
         var request = Task.fetchRequest(nil, predicate: predicate);
 
         var count = context.countForFetchRequest(request, error: nil)
-        NSLog("task due \(count)")
+        NSLog("reset badge to \(count)")
         UIApplication.sharedApplication().applicationIconBadgeNumber = count;
         
     }
@@ -80,4 +82,12 @@ extension Task {
         
         return Task.repeatString(cycle.integerValue)
     }
+
+    override var description: String {
+        return "task: \(name), due: \(dueDate.dateTimeStringLong()), repeat: \(cycle)";
+    }
+}
+
+func ==(lhs: Task, rhs: Task) -> Bool {
+    return lhs.name == rhs.name && lhs.cycle == rhs.cycle && lhs.dueDate == rhs.dueDate
 }

@@ -19,7 +19,12 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
     @IBOutlet var deleteButton : UIButton
     @IBOutlet var doneButton : UIButton
 
-    var dueDate:NSDate?
+    var dueDate:NSDate? {
+    didSet {
+        dueDateLabel.text = dueDate != nil ? Task.dueDateString(dueDate) : "Due Date"
+        dueDateClearButton.hidden = dueDate == nil
+    }
+    }
     var task: Task?
     var context:TimelyContext {
         return TimelyContext.managed();
@@ -38,15 +43,13 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
             if let taskDueDate = t.dueDate {
                 dueDatePicker.date = t.dueDate
                 dueDate = t.dueDate
-                dueDateLabel.text = t.dueDateString()
-            } else {
-                dueDateLabel.text = "Due Date"
             }
 
             repeatLabel.text = t.repeatString()
             repeatSteper.value = t.cycle.doubleValue
 
         } else {
+            dueDate = nil
             deleteButton.hidden = true
             doneButton.hidden = true
         }
@@ -98,16 +101,20 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
                 var newTask:Task = Task.createInContext(context);
                 newTask.name = nameField.text;
                 newTask.cycle = Int(repeatSteper.value)
-                if let due = dueDate {
+                if let due = self.dueDate {
                     newTask.dueDate = due.addTimeInterval(repeatSteper.value * 60*60*24) as NSDate
+
                 }
                 newTask.generateTaskId();
+                context.save(nil)
+                newTask.createNotification()
             }
 
             self.task!.removeNotification()
             context.deleteObject(self.task)
             Task.resetBadgeInContext(self.context)
             context.save(nil)
+
         }
 
         self.navigationController.popViewControllerAnimated(true);
@@ -143,8 +150,6 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
     }
     @IBAction func dueDatePickerChanged(sender: UIDatePicker) {
         dueDate = sender.date;
-        dueDateLabel.text = Task.dueDateString(dueDate)
-        dueDateClearButton.hidden = false
     }
 
     @IBAction func clearDueDate(sender: AnyObject) {
@@ -176,6 +181,7 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
             var datePickerIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
 
             dueDateClearButton.hidden = self.dueDateLabel.textColor != self.view.tintColor && self.dueDate != nil
+            if (dueDate == nil) { dueDate = dueDatePicker.date }
             tableView.beginUpdates()
             tableView.reloadData()
             tableView.endUpdates()

@@ -16,9 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
 
-        DelegateBridge().bridgeInitalizer();
-
+        DelegateBridge().bridgeInitalizer()
         TimelyContext.managed()
+
+        if let notifications = UIApplication.sharedApplication().scheduledLocalNotifications {
+            for notification :AnyObject in notifications {
+                var note = notification as UILocalNotification
+                NSLog("notification at \(note.fireDate.dateTimeStringLong())")
+            }
+        }
+
+
         return true
     }
 
