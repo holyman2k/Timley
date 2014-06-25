@@ -50,6 +50,19 @@ extension Task :Printable, Equatable {
         }
     }
 
+    func dueDateString() -> String? {
+        return Task.dueDateString(dueDate)
+    }
+
+    func repeatString() -> String {
+        
+        return Task.repeatString(cycle.integerValue)
+    }
+
+    override var description: String {
+        return "task: \(name), due: \(dueDate.dateTimeStringLong()), repeat: \(cycle)";
+    }
+
     class func resetBadgeInContext(context:NSManagedObjectContext) {
         var predicate = NSPredicate(format: "dueDate < %@", NSDate.date())
         var request = Task.fetchRequest(nil, predicate: predicate);
@@ -57,7 +70,7 @@ extension Task :Printable, Equatable {
         var count = context.countForFetchRequest(request, error: nil)
         NSLog("reset badge to \(count)")
         UIApplication.sharedApplication().applicationIconBadgeNumber = count;
-        
+
     }
 
     class func dueDateString(date:NSDate?) -> String? {
@@ -72,19 +85,6 @@ extension Task :Printable, Equatable {
 
         var postfix = days > 1 ? "s" : ""
         return days > 0 ? "Every \(days) day\(postfix)" : "Never repeat"
-    }
-
-    func dueDateString() -> String? {
-        return Task.dueDateString(dueDate)
-    }
-
-    func repeatString() -> String {
-        
-        return Task.repeatString(cycle.integerValue)
-    }
-
-    override var description: String {
-        return "task: \(name), due: \(dueDate.dateTimeStringLong()), repeat: \(cycle)";
     }
 }
 

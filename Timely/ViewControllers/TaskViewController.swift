@@ -44,7 +44,6 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
                 dueDatePicker.date = t.dueDate
                 dueDate = t.dueDate
             }
-
             repeatLabel.text = t.repeatString()
             repeatSteper.value = t.cycle.doubleValue
 
@@ -64,8 +63,11 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
     }
 
     @IBAction func onRepeatSteperChange(sender : UIStepper) {
-        var value = Int(sender.value)
-        self.repeatLabel.text = Task.repeatString(value)
+        self.repeatLabel.text = Task.repeatString(Int(sender.value))
+    }
+
+    @IBAction func clearDueDate(sender: AnyObject) {
+        dueDate = nil;
     }
 
     @IBAction func saveTask(sender : AnyObject) {
@@ -152,11 +154,6 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
         dueDate = sender.date;
     }
 
-    @IBAction func clearDueDate(sender: AnyObject) {
-        dueDate = nil;
-        dueDateLabel.text = "Due Date"
-        dueDatePicker.date = NSDate.date()
-    }
     func deleteTask() {
 
         self.task!.removeNotification()
