@@ -84,15 +84,16 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
 
         if task == nil {
             task = Task.createInContext(context) as Task
+            task!.generateTaskId()
         }
         if let t = task {
             t.name = nameField.text;
             t.dueDate = dueDate;
             t.cycle = Int(repeatSteper.value)
-            t.generateTaskId()
             context.save(nil)
             t.removeNotification()
             t.createNotification()
+            Task.resetBadgeInContext(context)
         }
         self.navigationController.popViewControllerAnimated(true);
     }
@@ -105,14 +106,13 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
                 newTask.cycle = Int(repeatSteper.value)
                 if let due = self.dueDate {
                     newTask.dueDate = due.addTimeInterval(repeatSteper.value * 60*60*24) as NSDate
-
                 }
-                newTask.generateTaskId();
+                newTask.generateTaskId()
                 context.save(nil)
                 newTask.createNotification()
             }
 
-            self.task!.removeNotification()
+            task!.removeNotification()
             context.deleteObject(self.task)
             Task.resetBadgeInContext(self.context)
             context.save(nil)

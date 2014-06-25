@@ -25,7 +25,7 @@ extension Task :Printable, Equatable {
 
             notification.userInfo = ["task-id" : taskId];
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
-            NSLog("create notification for task \(name) fire on \(due.dateTimeStringLong())")
+            NSLog("create notification for task \(self) with info \(taskId)")
         } else {
             NSLog("did not create notification")
         }
@@ -44,7 +44,7 @@ extension Task :Printable, Equatable {
                 var note = notification as UILocalNotification
                 if note.userInfo["task-id"] as String == taskId {
                     UIApplication.sharedApplication().cancelLocalNotification(note)
-                    NSLog("remove notification for task \(name)")
+                    NSLog("remove notification for task \(self)")
                 }
             }
         }
