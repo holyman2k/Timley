@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TimelyTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class TimelyTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, WXSwipeTableViewCellDelegate {
 
     var fetchedResultsController:NSFetchedResultsController
 
@@ -56,8 +56,8 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
 
 
     override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell? {
-        if let cell = tableView!.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)  as UITableViewCell! {
-
+        if let cell = tableView!.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)  as TimelyTableViewCell! {
+            cell.delegate = self;
             var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
             cell.textLabel!.text = task.name;
             cell.detailTextLabel!.text = task.dueDateString()
@@ -72,6 +72,52 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
         }
 
         return nil;
+    }
+
+    func tableViewCellDidEndSwipeWithState(cell:WXSwipeTableViewCell,  state:Int) {
+
+        var swipeState = SwipeState.Create(state)
+
+        switch swipeState {
+        case .ShortRightSwipe:
+            cell.animateSwipe(direction: .SwipeRight, completed: {
+                var indexPath = self.tableView.indexPathForCell(cell);
+                var task = self.fetchedResultsController.objectAtIndexPath(indexPath) as Task;
+                task.completeTask();
+                self.context.save(nil);
+            })
+        case .LongRightSwipe:
+            cell.animateSwipe(direction: .SwipeRight, completed: {
+                var indexPath = self.tableView.indexPathForCell(cell);
+                var task = self.fetchedResultsController.objectAtIndexPath(indexPath) as Task;
+                task.deleteTask();
+                self.context.save(nil);
+                })
+        case .ShortLeftSwipe:
+            fallthrough
+        case .LongLeftSwipe:
+            fallthrough
+        case .NoSwipe:
+            cell.contentView.backgroundColor = UIColor.whiteColor()
+        }
+    }
+
+    func tableViewCellChangedSwipeWithState(cell:WXSwipeTableViewCell, state:Int) {
+
+        var swipeState = SwipeState.Create(state)
+
+        switch swipeState {
+        case .ShortRightSwipe:
+            cell.contentView.backgroundColor = UIColor(red: 0, green: 0.478, blue: 0.792, alpha: 0.3)
+        case .LongRightSwipe:
+            cell.contentView.backgroundColor = UIColor(red: 0.77, green: 0.22, blue: 0.21, alpha: 0.3)
+        case .ShortLeftSwipe:
+            fallthrough
+        case .LongLeftSwipe:
+            fallthrough
+        case .NoSwipe:
+            cell.contentView.backgroundColor = UIColor.whiteColor()
+        }
     }
 
     // #pragma mark - Navigation

@@ -59,6 +59,35 @@ extension Task :Printable, Equatable {
         return Task.repeatString(cycle.integerValue)
     }
 
+    func completeTask()->(Task?) {
+        var newTask:Task?
+        if let cycle = self.cycle?.integerValue {
+            if cycle > 0 {
+                newTask = Task.createInContext(self.managedObjectContext) as Task;
+                newTask!.name = self.name
+                newTask!.cycle = cycle
+                if let due = self.dueDate {
+                    var dueInSeconds = cycle * 60 * 60 * 24
+                    newTask!.dueDate = due.addTimeInterval(NSTimeInterval(dueInSeconds)) as NSDate
+                }
+                newTask!.generateTaskId()
+                newTask!.createNotification()
+            }
+
+            self.removeNotification()
+            self.managedObjectContext.deleteObject(self)
+            Task.resetBadgeInContext(self.managedObjectContext)
+        }
+
+        return newTask;
+    }
+
+    func deleteTask() {
+        self.removeNotification()
+        self.managedObjectContext.deleteObject(self)
+        Task.resetBadgeInContext(self.managedObjectContext)
+    }
+
     override var description: String {
         return "task: \(name), due: \(dueDate.dateTimeStringLong()), repeat: \(cycle)";
     }

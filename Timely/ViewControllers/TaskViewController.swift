@@ -156,9 +156,7 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
 
     func deleteTask() {
 
-        self.task!.removeNotification()
-        context.deleteObject(self.task)
-        Task.resetBadgeInContext(self.context)
+        self.task!.deleteTask()
 
         context.save(nil)
 
