@@ -8,47 +8,50 @@
 
 import UIKit
 
-
-
-enum SwipeState :Int {
-    case ShortLeftSwipe = 0
-    case LongLeftSwipe = 1
-    case ShortRightSwipe = 2
-    case LongRightSwipe = 3
-    case NoSwipe = 4
+enum SwipeState : Int {
+    case ShortSwipe = 0
+    case LongSwipe = 1
+    case NoSwipe = 2
 
     static func Create(state:Int) -> SwipeState {
         switch state {
         case 0:
-            return SwipeState.ShortLeftSwipe
+            return SwipeState.ShortSwipe
         case 1:
-            return SwipeState.LongLeftSwipe
-        case 2:
-            return SwipeState.ShortRightSwipe
-        case 3:
-            return SwipeState.LongRightSwipe
-        case 4:
-            return SwipeState.NoSwipe
+            return SwipeState.LongSwipe
         default:
             return SwipeState.NoSwipe
         }
     }
 }
 
-enum SwipeDirection {
-    case SwipeLeft
-    case SwipeRight
+enum SwipeDirection : Int {
+    case DirectionNone =  0
+    case DirectionLeft = 1
+    case DirectionRight = 2
+
+    static func Create(direction:Int) -> SwipeDirection {
+        switch direction {
+        case 0:
+            return .DirectionNone
+        case 1:
+            return .DirectionLeft
+        case 2:
+            return .DirectionRight
+        default:
+            return .DirectionNone
+        }
+    }
 }
 
 //@class_protocol
 @objc
 protocol WXSwipeTableViewCellDelegate {
-    func tableViewCellDidEndSwipeWithState(cell:WXSwipeTableViewCell, state:Int)
-    func tableViewCellChangedSwipeWithState(cell:WXSwipeTableViewCell, state:Int)
+    func tableViewCellDidEndSwipeWithState(cell:WXSwipeTableViewCell, state:Int, direction:Int)
+    func tableViewCellChangedSwipeWithState(cell:WXSwipeTableViewCell, state:Int, direction:Int)
 }
 
 class WXSwipeTableViewCell: UITableViewCell {
-
 
     weak var delegate:WXSwipeTableViewCellDelegate?
 
@@ -66,11 +69,14 @@ class WXSwipeTableViewCell: UITableViewCell {
     var imageViewLeft:UIImageView?
     var imageViewRight:UIImageView?
 
+    var swipeGesture:UIPanGestureRecognizer?
+
     override func layoutSubviews()  {
         super.layoutSubviews();
 
-        let gesture = UIPanGestureRecognizer(target: self, action: "gestureHandle:")
-        self.addGestureRecognizer(gesture)
+        swipeGesture = UIPanGestureRecognizer(target: self, action: "gestureHandle:")
+        swipeGesture!.delegate = self;
+        self.addGestureRecognizer(swipeGesture)
 
         let iconSize = 20.0
         let iconPadding = 18.0
@@ -107,28 +113,27 @@ class WXSwipeTableViewCell: UITableViewCell {
         case .Began:()
         case .Changed:
             moveContentView(offset: point.x, animated: false)
-            let state = findSwipeState(offset: point.x);
-            triggerSwipeDelegate(swipeState: state, swipeEnded: false)
+            let (swipeState, direction) = findSwipeState(offset: point.x);
+            triggerSwipeDelegate(swipeState: swipeState, direction: direction, swipeEnded: false)
         case .Ended:
-            let state = findSwipeState(offset: point.x);
-            triggerSwipeDelegate(swipeState: state, swipeEnded: true)
+            let (swipeState, direction) = findSwipeState(offset: point.x);
+            triggerSwipeDelegate(swipeState: swipeState, direction: direction, swipeEnded: true)
         default:()
         }
-
     }
 
-    func triggerSwipeDelegate(#swipeState:SwipeState, swipeEnded:Bool) {
+    func triggerSwipeDelegate(#swipeState:SwipeState, direction:SwipeDirection, swipeEnded:Bool) {
 
-        switch (swipeState, swipeEnded) {
-        case (.ShortLeftSwipe, false):
+        switch (swipeState, direction, swipeEnded) {
+        case (.ShortSwipe, .DirectionLeft, false):
             imageViewRight!.image = iconShortLeft
-        case (.ShortRightSwipe, false):
+        case (.ShortSwipe, .DirectionRight, false):
             imageViewLeft!.image = iconShortRight
-        case (.LongLeftSwipe, false):
+        case (.LongSwipe, .DirectionLeft, false):
             imageViewRight!.image = iconLongLeft
-        case (.LongRightSwipe, false):
+        case (.LongSwipe, .DirectionRight, false):
             imageViewLeft!.image = iconLongRight
-        case (.NoSwipe, false):
+        case (.NoSwipe, _, false):
             imageViewRight!.image = nil
             imageViewLeft!.image = nil
         default: ()
@@ -136,9 +141,9 @@ class WXSwipeTableViewCell: UITableViewCell {
 
         if let handler = delegate {
             if swipeEnded {
-                handler.tableViewCellDidEndSwipeWithState(self, state: swipeState.toRaw())
+                handler.tableViewCellDidEndSwipeWithState(self, state: swipeState.toRaw(), direction: direction.toRaw())
             } else {
-                handler.tableViewCellChangedSwipeWithState(self, state: swipeState.toRaw())
+                handler.tableViewCellChangedSwipeWithState(self, state: swipeState.toRaw(), direction: direction.toRaw())
             }
         }
 
@@ -148,7 +153,7 @@ class WXSwipeTableViewCell: UITableViewCell {
     }
 
     func animateSwipe(#direction:SwipeDirection, completed: ()->() = {}) {
-        let finalX = direction == .SwipeLeft ? -self.contentView.frame.width : self.contentView.frame.width
+        let finalX = direction == .DirectionLeft ? -self.contentView.frame.width : self.contentView.frame.width
         moveContentView(offset: finalX, animated: true, completed: completed)
     }
 
@@ -160,36 +165,59 @@ class WXSwipeTableViewCell: UITableViewCell {
 
         if animated {
 
-            UIView.animateWithDuration(0.7, animations: block, completion: { (isCompleted:Bool) in
+            UIView.animateWithDuration(0.4, animations: block, completion: { (completion:Bool) in
+                completed();
 
-                dispatch_after(10, dispatch_get_main_queue(), completed);
-            })
-
+            });
         } else {
             block()
             completed();
         }
     }
 
-    func findSwipeState(#offset:Double) -> SwipeState {
+    func findSwipeState(#offset:Double) -> (SwipeState, SwipeDirection){
 
-        let direction = offset > 0 ? SwipeDirection.SwipeRight : SwipeDirection.SwipeLeft
+        let direction = offset == 0 ? SwipeDirection.DirectionNone : offset > 0 ? SwipeDirection.DirectionRight : SwipeDirection.DirectionLeft
 
         let aOffset = abs(offset)
-
-        if aOffset > shortSwipeOffsetWidth && aOffset < longSwipeOffsetWidth {
-            if direction == SwipeDirection.SwipeRight {
-                return .ShortRightSwipe
-            } else {
-                return .ShortLeftSwipe
-            }
-        } else if aOffset > longSwipeOffsetWidth {
-            if direction == SwipeDirection.SwipeRight {
-                return .LongRightSwipe
-            } else {
-                return .ShortLeftSwipe
-            }
+        switch aOffset {
+        case let x where x < shortSwipeOffsetWidth:
+            return (.NoSwipe, direction)
+        case let x where x > shortSwipeOffsetWidth && x < longSwipeOffsetWidth:
+            return (.ShortSwipe, direction)
+        case let x where x > longSwipeOffsetWidth:x
+            return (.LongSwipe, direction)
+        default:
+            return (.NoSwipe, direction)
         }
-        return .NoSwipe
     }
+
+    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+        if gestureRecognizer === swipeGesture && abs(contentView.frame.origin.x) > 0 {
+            return gestureRecognizer.state == UIGestureRecognizerState.Possible;
+        }
+        return false
+    }
+
+    override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool {
+
+        if (gestureRecognizer.isMemberOfClass(UILongPressGestureRecognizer)) {
+            return true;
+        }
+
+        let panGesture = gestureRecognizer as UIPanGestureRecognizer;
+        let translation = panGesture.translationInView(self);
+        return fabs(translation.y) < fabs(translation.x)
+    }
+
+
+
+//    - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+//    {
+//    if ([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]])
+//    return YES;
+//
+//    CGPoint translation = [(UIPanGestureRecognizer*)gestureRecognizer translationInView:self];
+//    return fabs(translation.y) < fabs(translation.x);
+//    }
 }

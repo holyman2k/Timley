@@ -44,8 +44,34 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
         fetchedResultsController.performFetch(nil);
     }
 
+    func controllerWillChangeContent(controller: NSFetchedResultsController!) {
+        tableView.beginUpdates()
+    }
+
+    func controller(controller: NSFetchedResultsController!, didChangeObject anObject: AnyObject!, atIndexPath indexPath: NSIndexPath!, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath!) {
+
+        switch type {
+        case NSFetchedResultsChangeInsert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        case NSFetchedResultsChangeDelete:
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        case NSFetchedResultsChangeUpdate:()
+            var cell = tableView.cellForRowAtIndexPath(indexPath) as TimelyTableViewCell
+            configCellAtIndexPath(indexPath, cell: &cell)
+        default: ()
+        }
+    }
+
     func controllerDidChangeContent(controller: NSFetchedResultsController!) {
-        tableView.reloadData();
+        tableView.endUpdates()
+    }
+
+    func configCellAtIndexPath(indexPath:NSIndexPath, inout cell:TimelyTableViewCell) {
+        cell.delegate = self;
+        var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
+        cell.taskNameLabel!.text = task.name;
+        cell.taskDueDateLabel!.text = task.dueDateString()
+        cell.taskNameLabel.textColor = task.isDue() ? UIColor.colorTaskNameDue() : UIColor.colorTaskName()
     }
 
     // #pragma mark - Table view data source
@@ -54,71 +80,60 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
         return fetchedResultsController.sections[section].numberOfObjects
     }
 
-
     override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell? {
-        if let cell = tableView!.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)  as TimelyTableViewCell! {
-            cell.delegate = self;
-            var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
-            cell.textLabel!.text = task.name;
-            cell.detailTextLabel!.text = task.dueDateString()
-
-            if task.isDue() {
-                cell.textLabel.textColor = UIColor.colorTaskNameDue()
-
-            } else {
-                cell.textLabel.textColor = UIColor.colorTaskName()
-            }
+        if var cell = tableView!.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)  as TimelyTableViewCell! {
+//            cell.delegate = self;
+//            var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
+//            cell.textLabel!.text = task.name;
+//            cell.detailTextLabel!.text = task.dueDateString()
+//            cell.textLabel.textColor = task.isDue() ? UIColor.colorTaskNameDue() : cell.textLabel.textColor = UIColor.colorTaskName()
+            configCellAtIndexPath(indexPath!, cell: &cell);
             return cell
         }
 
         return nil;
     }
 
-    func tableViewCellDidEndSwipeWithState(cell:WXSwipeTableViewCell,  state:Int) {
+    func tableViewCellDidEndSwipeWithState(cell:WXSwipeTableViewCell, state:Int, direction:Int) {
 
         var swipeState = SwipeState.Create(state)
+        var swipeDirection = SwipeDirection.Create(direction)
 
-        switch swipeState {
-        case .ShortRightSwipe:
-            cell.animateSwipe(direction: .SwipeRight, completed: {
+        switch (swipeState, swipeDirection) {
+        case (.ShortSwipe, .DirectionRight):
+            cell.animateSwipe(direction: .DirectionRight, completed: {
                 var indexPath = self.tableView.indexPathForCell(cell);
                 var task = self.fetchedResultsController.objectAtIndexPath(indexPath) as Task;
                 task.completeTask();
                 self.context.save(nil);
             })
-        case .LongRightSwipe:
-            cell.animateSwipe(direction: .SwipeRight, completed: {
+        case (.LongSwipe, .DirectionRight):
+            cell.animateSwipe(direction: .DirectionRight, completed: {
                 var indexPath = self.tableView.indexPathForCell(cell);
                 var task = self.fetchedResultsController.objectAtIndexPath(indexPath) as Task;
                 task.deleteTask();
                 self.context.save(nil);
+
             })
-        case .ShortLeftSwipe:
-            fallthrough
-        case .LongLeftSwipe:
-            fallthrough
-        case .NoSwipe:
+        default:
             cell.contentView.backgroundColor = UIColor.whiteColor()
         }
     }
 
-    func tableViewCellChangedSwipeWithState(cell:WXSwipeTableViewCell, state:Int) {
+    func tableViewCellChangedSwipeWithState(cell:WXSwipeTableViewCell, state:Int, direction:Int) {
 
         var indexPath = tableView.indexPathForCell(cell);
         var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
 
         var swipeState = SwipeState.Create(state)
+        var swipeDirection = SwipeDirection.Create(direction)
 
-        switch swipeState {
-        case .ShortRightSwipe:
+        switch (swipeState, swipeDirection) {
+        case (.ShortSwipe, .DirectionRight):
             cell.backgroundColor = UIColor.colorTaskCompleted()
-        case .LongRightSwipe:
+        case (.LongSwipe, .DirectionRight):
             cell.backgroundColor = UIColor.colorTaskDelete()
-        case .ShortLeftSwipe:
-            fallthrough
-        case .LongLeftSwipe:
-            fallthrough
-        case .NoSwipe:
+        default:
             cell.backgroundColor = UIColor.whiteColor()
         }
     }

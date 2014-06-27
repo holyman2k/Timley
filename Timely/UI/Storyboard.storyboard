@@ -12,29 +12,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="9pe-b3-izg" detailTextLabel="y9G-OZ-1Kg" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="q23-js-5Bo" customClass="TimelyTableViewCell" customModule="Timely" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="65" id="q23-js-5Bo" customClass="TimelyTableViewCell" customModule="Timely" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q23-js-5Bo" id="dc6-dv-vxk">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9pe-b3-izg">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiJ-dU-BPR">
+                                            <rect key="frame" x="20" y="12" width="280" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="zAb-fa-58x"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.29655611520000003" green="0.29655611520000003" blue="0.29655611520000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y9G-OZ-1Kg">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo7-zN-yjX">
+                                            <rect key="frame" x="20" y="33" width="280" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="0Yj-NJ-UbB"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.4272460938" green="0.4272460938" blue="0.4272460938" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Lo7-zN-yjX" firstAttribute="leading" secondItem="dc6-dv-vxk" secondAttribute="leading" constant="20" id="0Hk-ek-AEZ"/>
+                                        <constraint firstItem="eiJ-dU-BPR" firstAttribute="top" secondItem="dc6-dv-vxk" secondAttribute="top" constant="12" id="HkZ-iy-z08"/>
+                                        <constraint firstItem="Lo7-zN-yjX" firstAttribute="top" secondItem="eiJ-dU-BPR" secondAttribute="bottom" id="TG2-wO-Tas"/>
+                                        <constraint firstAttribute="trailing" secondItem="eiJ-dU-BPR" secondAttribute="trailing" constant="20" id="UJm-5F-Iut"/>
+                                        <constraint firstAttribute="trailing" secondItem="Lo7-zN-yjX" secondAttribute="trailing" constant="20" id="qYE-iW-yQC"/>
+                                        <constraint firstItem="eiJ-dU-BPR" firstAttribute="leading" secondItem="dc6-dv-vxk" secondAttribute="leading" constant="20" id="vt8-yC-abT"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="taskDueDateLabel" destination="Lo7-zN-yjX" id="1Gr-kt-QDY"/>
+                                    <outlet property="taskNameLabel" destination="eiJ-dU-BPR" id="BOS-LP-ATB"/>
                                     <segue destination="vy6-KN-dDR" kind="push" identifier="edit" id="NSd-3Y-odr"/>
                                 </connections>
                             </tableViewCell>

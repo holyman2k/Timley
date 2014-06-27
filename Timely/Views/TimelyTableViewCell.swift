@@ -10,6 +10,10 @@ import UIKit
 
 class TimelyTableViewCell: WXSwipeTableViewCell {
 
+    @IBOutlet var taskNameLabel:UILabel;
+
+    @IBOutlet var taskDueDateLabel:UILabel;
+
     override func layoutSubviews() {
         super.layoutSubviews()
 //        allowSwipeLeft = true
