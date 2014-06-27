@@ -63,10 +63,10 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
             cell.detailTextLabel!.text = task.dueDateString()
 
             if task.isDue() {
-                cell.textLabel.textColor = UIColor(red: 0.77, green: 0.22, blue: 0.21, alpha: 1)
+                cell.textLabel.textColor = UIColor.colorTaskNameDue()
 
             } else {
-                cell.textLabel.textColor = UIColor(white: 0.37, alpha: 1)
+                cell.textLabel.textColor = UIColor.colorTaskName()
             }
             return cell
         }
@@ -92,7 +92,7 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
                 var task = self.fetchedResultsController.objectAtIndexPath(indexPath) as Task;
                 task.deleteTask();
                 self.context.save(nil);
-                })
+            })
         case .ShortLeftSwipe:
             fallthrough
         case .LongLeftSwipe:
@@ -104,19 +104,22 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
 
     func tableViewCellChangedSwipeWithState(cell:WXSwipeTableViewCell, state:Int) {
 
+        var indexPath = tableView.indexPathForCell(cell);
+        var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
+
         var swipeState = SwipeState.Create(state)
 
         switch swipeState {
         case .ShortRightSwipe:
-            cell.contentView.backgroundColor = UIColor(red: 0, green: 0.478, blue: 0.792, alpha: 0.3)
+            cell.backgroundColor = UIColor.colorTaskCompleted()
         case .LongRightSwipe:
-            cell.contentView.backgroundColor = UIColor(red: 0.77, green: 0.22, blue: 0.21, alpha: 0.3)
+            cell.backgroundColor = UIColor.colorTaskDelete()
         case .ShortLeftSwipe:
             fallthrough
         case .LongLeftSwipe:
             fallthrough
         case .NoSwipe:
-            cell.contentView.backgroundColor = UIColor.whiteColor()
+            cell.backgroundColor = UIColor.whiteColor()
         }
     }
 
@@ -133,6 +136,7 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
             }
         }
     }
+
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self);
     }

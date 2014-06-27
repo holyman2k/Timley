@@ -58,12 +58,35 @@ class WXSwipeTableViewCell: UITableViewCell {
     var shortSwipeOffsetWidth:Double = 96
     var longSwipeOffsetWidth:Double = 210
 
+    var iconShortLeft:UIImage?
+    var iconLongLeft:UIImage?
+    var iconShortRight:UIImage?
+    var iconLongRight:UIImage?
+
+    var imageViewLeft:UIImageView?
+    var imageViewRight:UIImageView?
+
     override func layoutSubviews()  {
         super.layoutSubviews();
 
         let gesture = UIPanGestureRecognizer(target: self, action: "gestureHandle:")
         self.addGestureRecognizer(gesture)
 
+        let iconSize = 20.0
+        let iconPadding = 18.0
+        let posY = (frame.size.height - iconSize) / 2
+        let rectLeft = CGRectMake(-iconSize - iconPadding, posY, iconSize, iconSize)
+        imageViewLeft = UIImageView(frame: rectLeft)
+        imageViewLeft!.backgroundColor = UIColor.clearColor();
+        imageViewLeft!.tintColor = UIColor.whiteColor();
+
+        let rectRight = CGRectMake(frame.size.width + iconPadding, posY, iconSize, iconSize)
+        imageViewRight = UIImageView(frame: rectRight)
+        imageViewRight!.backgroundColor = UIColor.clearColor();
+        imageViewRight!.tintColor = UIColor.whiteColor();
+
+        contentView.addSubview(imageViewLeft)
+        contentView.addSubview(imageViewRight)
     }
 
     override func prepareForReuse()  {
@@ -77,15 +100,11 @@ class WXSwipeTableViewCell: UITableViewCell {
 
         let point = gesture.translationInView(self.contentView);
 
-
-        println("short \(self.shortSwipeOffsetWidth), long \(self.longSwipeOffsetWidth)")
-
         if point.x > 0 && !allowSwipeRight { return }
         if point.x < 0 && !allowSwipeLeft { return }
 
         switch gesture.state {
-        case .Began:
-            println("start")
+        case .Began:()
         case .Changed:
             moveContentView(offset: point.x, animated: false)
             let state = findSwipeState(offset: point.x);
@@ -93,29 +112,29 @@ class WXSwipeTableViewCell: UITableViewCell {
         case .Ended:
             let state = findSwipeState(offset: point.x);
             triggerSwipeDelegate(swipeState: state, swipeEnded: true)
-        default:
-            println("do else \(gesture.state)")
+        default:()
         }
 
     }
 
     func triggerSwipeDelegate(#swipeState:SwipeState, swipeEnded:Bool) {
 
-//        switch (swipeState, swipeEnded) {
-//        case (.ShortLeftSwipe, true):
-//            animateSwipe(direction: .SwipeLeft)
-//        case (.ShortRightSwipe, true):
-//            animateSwipe(direction: .SwipeRight)
-//        case (.LongLeftSwipe, true):
-//            animateSwipe(direction: .SwipeLeft)
-//        case (.LongRightSwipe, true):
-//            animateSwipe(direction: .SwipeRight)
-//        default:
-//            var a = 1
-//        }
+        switch (swipeState, swipeEnded) {
+        case (.ShortLeftSwipe, false):
+            imageViewRight!.image = iconShortLeft
+        case (.ShortRightSwipe, false):
+            imageViewLeft!.image = iconShortRight
+        case (.LongLeftSwipe, false):
+            imageViewRight!.image = iconLongLeft
+        case (.LongRightSwipe, false):
+            imageViewLeft!.image = iconLongRight
+        case (.NoSwipe, false):
+            imageViewRight!.image = nil
+            imageViewLeft!.image = nil
+        default: ()
+        }
 
         if let handler = delegate {
-            println("handler \(handler)")
             if swipeEnded {
                 handler.tableViewCellDidEndSwipeWithState(self, state: swipeState.toRaw())
             } else {
@@ -157,23 +176,17 @@ class WXSwipeTableViewCell: UITableViewCell {
         let direction = offset > 0 ? SwipeDirection.SwipeRight : SwipeDirection.SwipeLeft
 
         let aOffset = abs(offset)
-//
-//        println("offset \(aOffset), short \(self.shortSwipeOffsetWidth), long \(self.longSwipeOffsetWidth)")
 
         if aOffset > shortSwipeOffsetWidth && aOffset < longSwipeOffsetWidth {
             if direction == SwipeDirection.SwipeRight {
-                println("short right swipe")
                 return .ShortRightSwipe
             } else {
-                println("short left swipe")
                 return .ShortLeftSwipe
             }
         } else if aOffset > longSwipeOffsetWidth {
             if direction == SwipeDirection.SwipeRight {
-                println("long right swipe")
                 return .LongRightSwipe
             } else {
-                println("long left swipe")
                 return .ShortLeftSwipe
             }
         }
