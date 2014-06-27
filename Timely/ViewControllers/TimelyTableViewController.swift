@@ -69,9 +69,7 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
     func configCellAtIndexPath(indexPath:NSIndexPath, inout cell:TimelyTableViewCell) {
         cell.delegate = self;
         var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
-        cell.taskNameLabel!.text = task.name;
-        cell.taskDueDateLabel!.text = task.dueDateString()
-        cell.taskNameLabel.textColor = task.isDue() ? UIColor.colorTaskNameDue() : UIColor.colorTaskName()
+        cell.setTask(task)
     }
 
     // #pragma mark - Table view data source
@@ -82,11 +80,6 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
 
     override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell? {
         if var cell = tableView!.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)  as TimelyTableViewCell! {
-//            cell.delegate = self;
-//            var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
-//            cell.textLabel!.text = task.name;
-//            cell.detailTextLabel!.text = task.dueDateString()
-//            cell.textLabel.textColor = task.isDue() ? UIColor.colorTaskNameDue() : cell.textLabel.textColor = UIColor.colorTaskName()
             configCellAtIndexPath(indexPath!, cell: &cell);
             return cell
         }
@@ -113,7 +106,6 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
                 var task = self.fetchedResultsController.objectAtIndexPath(indexPath) as Task;
                 task.deleteTask();
                 self.context.save(nil);
-
             })
         default:
             cell.contentView.backgroundColor = UIColor.whiteColor()

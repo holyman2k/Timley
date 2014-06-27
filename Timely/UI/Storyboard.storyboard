@@ -20,27 +20,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiJ-dU-BPR">
-                                            <rect key="frame" x="20" y="12" width="280" height="21"/>
+                                            <rect key="frame" x="20" y="10" width="280" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="zAb-fa-58x"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.29655611520000003" green="0.29655611520000003" blue="0.29655611520000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo7-zN-yjX">
-                                            <rect key="frame" x="20" y="33" width="280" height="21"/>
+                                            <rect key="frame" x="20" y="31" width="280" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="0Yj-NJ-UbB"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="0.4272460938" green="0.4272460938" blue="0.4272460938" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.5845424107142857" green="0.5845424107142857" blue="0.5845424107142857" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Lo7-zN-yjX" firstAttribute="leading" secondItem="dc6-dv-vxk" secondAttribute="leading" constant="20" id="0Hk-ek-AEZ"/>
-                                        <constraint firstItem="eiJ-dU-BPR" firstAttribute="top" secondItem="dc6-dv-vxk" secondAttribute="top" constant="12" id="HkZ-iy-z08"/>
+                                        <constraint firstItem="eiJ-dU-BPR" firstAttribute="top" secondItem="dc6-dv-vxk" secondAttribute="top" constant="10" id="HkZ-iy-z08"/>
                                         <constraint firstItem="Lo7-zN-yjX" firstAttribute="top" secondItem="eiJ-dU-BPR" secondAttribute="bottom" id="TG2-wO-Tas"/>
                                         <constraint firstAttribute="trailing" secondItem="eiJ-dU-BPR" secondAttribute="trailing" constant="20" id="UJm-5F-Iut"/>
                                         <constraint firstAttribute="trailing" secondItem="Lo7-zN-yjX" secondAttribute="trailing" constant="20" id="qYE-iW-yQC"/>
@@ -50,6 +50,7 @@
                                 <connections>
                                     <outlet property="taskDueDateLabel" destination="Lo7-zN-yjX" id="1Gr-kt-QDY"/>
                                     <outlet property="taskNameLabel" destination="eiJ-dU-BPR" id="BOS-LP-ATB"/>
+                                    <outlet property="taskNameTopConstraint" destination="HkZ-iy-z08" id="5XO-ja-RV7"/>
                                     <segue destination="vy6-KN-dDR" kind="push" identifier="edit" id="NSd-3Y-odr"/>
                                 </connections>
                             </tableViewCell>

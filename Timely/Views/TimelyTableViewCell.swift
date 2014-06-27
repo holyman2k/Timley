@@ -10,6 +10,7 @@ import UIKit
 
 class TimelyTableViewCell: WXSwipeTableViewCell {
 
+    @IBOutlet var taskNameTopConstraint: NSLayoutConstraint
     @IBOutlet var taskNameLabel:UILabel;
 
     @IBOutlet var taskDueDateLabel:UILabel;
@@ -23,5 +24,17 @@ class TimelyTableViewCell: WXSwipeTableViewCell {
 
         iconShortRight = UIImage(named: "tick").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
         iconLongRight  = UIImage(named: "cross").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
+    }
+
+    func setTask(task:Task) {
+
+        taskNameLabel!.text = task.name;
+        taskDueDateLabel!.text = task.dueDateString()
+        taskNameLabel.textColor = task.isDue() ? UIColor.colorTaskNameDue() : UIColor.colorTaskName()
+
+        if task.dueDateString() == nil  {
+            taskNameTopConstraint.constant = 20;
+            self.updateConstraints()
+        }
     }
 }
