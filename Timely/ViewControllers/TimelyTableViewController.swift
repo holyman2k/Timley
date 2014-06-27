@@ -29,10 +29,10 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
 
     override func viewWillLayoutSubviews() {
 
-        let iconSize:CGFloat = 20.0
-        let iconX:CGFloat = CGFloat((Double(view.frame.size.width) - Double(iconSize)) / 2.0)
+        let iconSize = 20.0
+        let iconX = (view.frame.size.width.d - iconSize) / 2.0
 
-        addIcon.frame = CGRectMake(iconX, -50, iconSize, iconSize)
+        addIcon.frame = CGRectMake(iconX.f, -50, iconSize.f, iconSize.f)
         addIcon.image = UIImage(named: "add").imageWithRenderingMode(.AlwaysTemplate)
         view.addSubview(addIcon);
     }

@@ -78,15 +78,15 @@ class WXSwipeTableViewCell: UITableViewCell {
         swipeGesture!.delegate = self;
         self.addGestureRecognizer(swipeGesture)
 
-        let iconSize:Double = 20.0
-        let iconPadding:Double = 18.0
-        let posY = (Double(frame.size.height) - iconSize) / 2.0
-        let rectLeft = CGRectMake(Float(-iconSize - iconPadding), Float(posY), Float(iconSize), Float(iconSize))
+        let iconSize = 20.0
+        let iconPadding = 18.0
+        let posY = (frame.size.height.d - iconSize) / 2.0
+        let rectLeft = CGRectMake(-iconSize.f - iconPadding.f, posY.f, iconSize.f, iconSize.f)
         imageViewLeft = UIImageView(frame: rectLeft)
         imageViewLeft!.backgroundColor = UIColor.clearColor();
         imageViewLeft!.tintColor = UIColor.whiteColor();
 
-        let rectRight = CGRectMake(Float(Double(frame.size.width) + iconPadding), Float(posY), Float(iconSize), Float(iconSize))
+        let rectRight = CGRectMake(frame.size.width + iconPadding.f, posY.f, iconSize.f, iconSize.f)
         imageViewRight = UIImageView(frame: rectRight)
         imageViewRight!.backgroundColor = UIColor.clearColor();
         imageViewRight!.tintColor = UIColor.whiteColor();
@@ -112,11 +112,11 @@ class WXSwipeTableViewCell: UITableViewCell {
         switch gesture.state {
         case .Began:()
         case .Changed:
-            moveContentView(offset: Double(point.x), animated: false)
-            let (swipeState, direction) = findSwipeState(offset: Double(point.x));
+            moveContentView(offset: point.x.d, animated: false)
+            let (swipeState, direction) = findSwipeState(offset: point.x.d);
             triggerSwipeDelegate(swipeState: swipeState, direction: direction, swipeEnded: false)
         case .Ended:
-            let (swipeState, direction) = findSwipeState(offset: Double(point.x));
+            let (swipeState, direction) = findSwipeState(offset: point.x.d);
             triggerSwipeDelegate(swipeState: swipeState, direction: direction, swipeEnded: true)
         default:()
         }
@@ -153,14 +153,14 @@ class WXSwipeTableViewCell: UITableViewCell {
     }
 
     func animateSwipe(#direction:SwipeDirection, completed: ()->() = {}) {
-        let finalX = direction == .DirectionLeft ? -self.contentView.frame.width : self.contentView.frame.width
-        moveContentView(offset: Double(finalX), animated: true, completed: completed)
+        let finalX = direction == .DirectionLeft ? -self.contentView.frame.width.d : self.contentView.frame.width.d
+        moveContentView(offset: finalX, animated: true, completed: completed)
     }
 
     func moveContentView(#offset:Double, animated:Bool, completed: ()->() = {}) {
         var block = { ()->() in
             let frame = self.contentView.frame;
-            self.contentView.frame = CGRectMake(CGFloat(offset), 0, frame.size.width, frame.size.height);
+            self.contentView.frame = CGRectMake(offset.f, 0, frame.size.width, frame.size.height);
         }
 
         if animated {
@@ -207,7 +207,7 @@ class WXSwipeTableViewCell: UITableViewCell {
 
         let panGesture = gestureRecognizer as UIPanGestureRecognizer;
         let translation = panGesture.translationInView(self);
-        return fabs(Double(translation.y)) < fabs(Double(translation.x))
+        return fabs(translation.y.d) < fabs(translation.x.d)
     }
 
 

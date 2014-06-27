@@ -19,8 +19,8 @@ class TimelyTableViewCell: WXSwipeTableViewCell {
         super.layoutSubviews()
 //        allowSwipeLeft = true
         allowSwipeRight = true
-        shortSwipeOffsetWidth = Double(self.frame.size.width * 0.25)
-        longSwipeOffsetWidth = Double(self.frame.size.width * 0.55)
+        shortSwipeOffsetWidth = frame.size.width.d * 0.25
+        longSwipeOffsetWidth = frame.size.width.d * 0.55
 
         iconShortRight = UIImage(named: "tick").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
         iconLongRight  = UIImage(named: "cross").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);

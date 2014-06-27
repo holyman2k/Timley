@@ -15,8 +15,8 @@ extension TimelyTableViewController {
     override func scrollViewDidScroll(scrollView: UIScrollView!){
         if scrollView.contentOffset.y < 0 {
             var offset = max(-scrollView.contentOffset.y - 64 - 20, 0)
-            var addIconAlpha = min(CGFloat(offset) / CGFloat(-addIcon.frame.origin.y), 1)
-            addIcon.alpha = addIconAlpha
+            var addIconAlpha = min(offset.d / -addIcon.frame.origin.y.d, 1)
+            addIcon.alpha = addIconAlpha.f
             if addIcon.alpha == 1 {
                 addIcon.tintColor = self.view.tintColor
             } else {
