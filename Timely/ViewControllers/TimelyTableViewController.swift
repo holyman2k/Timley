@@ -97,15 +97,13 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
             cell.animateSwipe(direction: .DirectionRight, completed: {
                 var indexPath = self.tableView.indexPathForCell(cell);
                 var task = self.fetchedResultsController.objectAtIndexPath(indexPath) as Task;
-                task.completeTask();
-                self.context.save(nil);
+                TaskViewModel(task: task).done(self.context)
             })
         case (.LongSwipe, .DirectionRight):
             cell.animateSwipe(direction: .DirectionRight, completed: {
                 var indexPath = self.tableView.indexPathForCell(cell);
                 var task = self.fetchedResultsController.objectAtIndexPath(indexPath) as Task;
-                task.deleteTask();
-                self.context.save(nil);
+                TaskViewModel(task: task).delete(self.context)
             })
         default:
             cell.contentView.backgroundColor = UIColor.whiteColor()
@@ -138,7 +136,8 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
         if (segue!.identifier == "edit") {
             if  let task = fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow()) as Task! {
                 if let controller = segue!.destinationViewController as TaskViewController! {
-                    controller.task = task as Task;
+                    let taskViewModel = TaskViewModel(task:task as Task)
+                    controller.taskViewModel = taskViewModel
                 }
             }
         }

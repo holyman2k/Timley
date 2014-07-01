@@ -26,3 +26,8 @@ extension CGFloat {
     }
 }
 
+extension Int {
+    var d:Double {
+        return Double(self)
+    }
+}

@@ -79,6 +79,9 @@
                                                     <color key="textColor" red="0.29655611520000003" green="0.29655611520000003" blue="0.29655611520000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <action selector="nameFieldChange:" destination="vy6-KN-dDR" eventType="editingChanged" id="gTk-bS-Zbf"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
