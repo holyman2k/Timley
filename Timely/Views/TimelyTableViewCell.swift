@@ -17,7 +17,6 @@ class TimelyTableViewCell: WXSwipeTableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-//        allowSwipeLeft = true
         allowSwipeRight = true
         shortSwipeOffsetWidth = frame.size.width.d * 0.25
         longSwipeOffsetWidth = frame.size.width.d * 0.55
