@@ -17,14 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
 
         DelegateBridge().bridgeInitalizer()
-        TimelyContext.managed()
+        let context = TimelyContext.managed()
 
-        if let notifications = UIApplication.sharedApplication().scheduledLocalNotifications {
-            for notification :AnyObject in notifications {
-                var note = notification as UILocalNotification
-                NSLog("notification at \(note.fireDate.dateTimeStringLong())")
-            }
-        }
+//        if let notifications = UIApplication.sharedApplication().scheduledLocalNotifications {
+//            for notification :AnyObject in notifications {
+//                var note = notification as UILocalNotification
+//                NSLog("notification at \(note.fireDate.dateTimeStringLong())")
+//            }
+//        }
+
+
+        TaskNotificationService.resetBadge(context)
 
 
         return true

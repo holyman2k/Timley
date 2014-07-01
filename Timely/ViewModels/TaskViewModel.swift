@@ -81,6 +81,8 @@ class TaskViewModel {
         context.save(nil)
 
         TaskNotificationService.createNotification(t)
+
+        TaskNotificationService.resetBadge(context)
     }
 
     func delete(context:NSManagedObjectContext) {
@@ -88,6 +90,7 @@ class TaskViewModel {
 
             TaskNotificationService.removeNotification(t)
             context.deleteObject(t)
+            TaskNotificationService.resetBadge(context)
         }
     }
 
@@ -97,20 +100,20 @@ class TaskViewModel {
 
         if cycle > 0 {
             var newTask:Task = Task.createInContext(context);
+            newTask.generateTaskId()
             newTask.name = name;
             newTask.cycle = cycle
             if let due = dueDate {
                 newTask.dueDate = due.addTimeInterval(cycle.d * 60*60*24) as NSDate
             }
-            newTask.generateTaskId()
             context.save(nil)
             TaskNotificationService.createNotification(newTask)
         }
 
         TaskNotificationService.removeNotification(task!)
         context.deleteObject(task)
-        TaskNotificationService.resetBadge(context)
         context.save(nil)
+        TaskNotificationService.resetBadge(context)
 
     }
 }
