@@ -19,23 +19,38 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q23-js-5Bo" id="dc6-dv-vxk">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiJ-dU-BPR">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiJ-dU-BPR" userLabel="Title Label">
                                             <rect key="frame" x="20" y="10" width="280" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="280" id="SIr-be-1JN"/>
+                                                <constraint firstAttribute="height" constant="21" id="iiL-0a-3ph"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.29655611520000003" green="0.29655611520000003" blue="0.29655611520000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo7-zN-yjX">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo7-zN-yjX" userLabel="Due Date Label">
                                             <rect key="frame" x="20" y="31" width="280" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="280" id="edh-Ub-1cH"/>
+                                                <constraint firstAttribute="height" constant="21" id="ihk-WN-M1e"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.5845424107142857" green="0.5845424107142857" blue="0.5845424107142857" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Lo7-zN-yjX" firstAttribute="top" secondItem="eiJ-dU-BPR" secondAttribute="bottom" id="JpR-g2-v86"/>
+                                        <constraint firstItem="eiJ-dU-BPR" firstAttribute="top" secondItem="dc6-dv-vxk" secondAttribute="top" constant="10" id="MUK-en-ZE3"/>
+                                        <constraint firstItem="eiJ-dU-BPR" firstAttribute="leading" secondItem="dc6-dv-vxk" secondAttribute="leading" constant="20" id="PaM-R5-dB9"/>
+                                        <constraint firstItem="Lo7-zN-yjX" firstAttribute="leading" secondItem="dc6-dv-vxk" secondAttribute="leading" constant="20" id="py9-BJ-sAu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="taskDueDateLabel" destination="Lo7-zN-yjX" id="1Gr-kt-QDY"/>
                                     <outlet property="taskNameLabel" destination="eiJ-dU-BPR" id="BOS-LP-ATB"/>
+                                    <outlet property="taskNameTopConstraint" destination="MUK-en-ZE3" id="vu8-ZG-97E"/>
                                     <segue destination="vy6-KN-dDR" kind="push" identifier="edit" id="NSd-3Y-odr"/>
                                 </connections>
                             </tableViewCell>
@@ -84,6 +99,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="none" indentationWidth="10" rowHeight="30" id="8jV-C7-SIO">
