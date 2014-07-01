@@ -12,7 +12,7 @@
 
 - (void)bridgeInitalizer
 {
-    if ([UIDevice currentDevice].systemVersion.floatValue >=8) {
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8) {
 
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound
                                                 | UIUserNotificationTypeAlert
