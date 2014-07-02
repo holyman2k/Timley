@@ -23,6 +23,8 @@ class TimelyTableViewCell: WXSwipeTableViewCell {
 
         iconShortRight = UIImage(named: "tick").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
         iconLongRight  = UIImage(named: "cross").imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
+
+        self.contentView.backgroundColor = UIColor.whiteColor()
     }
 
     func setTask(task:Task) {
