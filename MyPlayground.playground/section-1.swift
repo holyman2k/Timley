@@ -1,33 +1,10 @@
 // Playground - noun: a place where people can play
 
-import Cocoa
+import UIKit
 
-//extension Double {
-//    var float:CGFloat {
-//    return CGFloat(self)
-//    }
-//    @conversion func __convert(i: Int=0) -> Double {
-//        return Double(i)
-//    }
-//    @conversion func __convert(i: CGFloat=0) -> Double {
-//        return Double(i)
-//    }
-//}
-//
-//extension CGFloat {
-//    var double:Double {
-//    return Double(self)
-//    }
-//}
-//
-//let i = 10
-//
-//let d:Double = i
+var str = "Hello, playground"
 
-
-
-
-
-
-
-
+let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+view.layer.cornerRadius = 15
+view.backgroundColor = UIColor.redColor()
+view

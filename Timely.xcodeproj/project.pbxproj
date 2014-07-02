@@ -42,7 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6F0E147219501C0B008C7438 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		6F1265A31953AF8D00104B49 /* TimelyTableViewControllerScrollExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelyTableViewControllerScrollExtension.swift; sourceTree = "<group>"; };
 		6F2B72E1194D166D0076AB18 /* Timely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F2B72E5194D166D0076AB18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		6F520D79195270D900646360 /* DelegateBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelegateBridge.h; sourceTree = "<group>"; };
 		6F6D8C5819622FCC00BC8C6F /* TaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskViewModel.swift; path = ViewModels/TaskViewModel.swift; sourceTree = "<group>"; };
 		6F6D8C5A1962346F00BC8C6F /* TaskNotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskNotificationService.swift; path = Services/TaskNotificationService.swift; sourceTree = "<group>"; };
+		6F70D9071963A33F0058CA8A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		6F995991195D57DA00A155E7 /* ConversionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversionExtension.swift; path = Extensions/ConversionExtension.swift; sourceTree = "<group>"; };
 		6F9FC397194D233800A0C9C5 /* ManagedObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectExtension.swift; path = Extensions/ManagedObjectExtension.swift; sourceTree = "<group>"; };
 		6FA78EA0195008EF00557863 /* Easter-Bell-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Easter-Bell-icon.png"; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		6F2B72D8194D166D0076AB18 = {
 			isa = PBXGroup;
 			children = (
-				6F0E147219501C0B008C7438 /* MyPlayground.playground */,
+				6F70D9071963A33F0058CA8A /* MyPlayground.playground */,
 				6FA78E9F195008E500557863 /* Assets */,
 				6F2B72E3194D166D0076AB18 /* Timely */,
 				6F2B72F4194D166D0076AB18 /* TimelyTests */,
