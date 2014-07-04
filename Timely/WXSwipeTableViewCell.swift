@@ -165,14 +165,9 @@ class WXSwipeTableViewCell: UITableViewCell {
 
         if animated {
 
-//            UIView.animateWithDuration(0.6, delay: 0.1, usingSpringWithDamping: 0.65, initialSpringVelocity: 1, options: UIViewAnimationOptions.CurveEaseOut, animations: block, completion: {(completion:Bool) in
-//                completed();
-//            })
-
-
-            UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: block, completion: {(completion:Bool) in
+            UIView.animateWithDuration(0.4, delay: 0.2, options: UIViewAnimationOptions.CurveEaseIn, animations: block, completion: {(completion:Bool) in
                 completed();
-                })
+            })
 //            UIView.animateWithDuration(0.4, animations: block, completion: { (completion:Bool) in
 //                completed();
 //

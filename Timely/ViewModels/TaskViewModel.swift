@@ -106,14 +106,16 @@ class TaskViewModel {
             if let due = dueDate {
                 newTask.dueDate = due.addTimeInterval(cycle.d * 60*60*24) as NSDate
             }
+            TaskNotificationService.removeNotification(task!)
+            context.deleteObject(task)
             context.save(nil)
             TaskNotificationService.createNotification(newTask)
+        } else  {
+            TaskNotificationService.removeNotification(task!)
+            context.deleteObject(task)
+            context.save(nil)
         }
 
-        TaskNotificationService.removeNotification(task!)
-        context.deleteObject(task)
-        context.save(nil)
         TaskNotificationService.resetBadge(context)
-
     }
 }

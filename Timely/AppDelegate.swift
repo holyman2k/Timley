@@ -49,13 +49,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         TimelyContext.managed().saveContext()
     }
-
-//    func application(application: UIApplication!, didReceiveLocalNotification notification: UILocalNotification!) {
-////        var state = application.applicationState;
-////        if state == UIApplicationState.Active {
-//            var alertView = UIAlertView(title: "Reminder", message: notification.alertBody, delegate: nil, cancelButtonTitle: "OK");
-////        }
-//    }
-
 }
 
