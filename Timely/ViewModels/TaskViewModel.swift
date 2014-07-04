@@ -81,8 +81,8 @@ class TaskViewModel {
         context.save(nil)
 
         TaskNotificationService.createNotification(t)
-
         TaskNotificationService.resetBadge(context)
+        TaskNotificationService.resetNotificationBadgeCount()
     }
 
     func delete(context:NSManagedObjectContext) {
@@ -110,12 +110,15 @@ class TaskViewModel {
             context.deleteObject(task)
             context.save(nil)
             TaskNotificationService.createNotification(newTask)
+            TaskNotificationService.resetBadge(context)
+            TaskNotificationService.resetNotificationBadgeCount()
         } else  {
             TaskNotificationService.removeNotification(task!)
+            TaskNotificationService.resetBadge(context)
+            TaskNotificationService.resetNotificationBadgeCount()
             context.deleteObject(task)
             context.save(nil)
         }
 
-        TaskNotificationService.resetBadge(context)
     }
 }
