@@ -30,7 +30,14 @@ class TimelyTableViewCell: WXSwipeTableViewCell {
     func setTask(task:Task) {
 
         taskNameLabel!.text = task.name;
-        taskDueDateLabel!.text = task.dueDateString()
+
+        if let cycle = task.cycle {
+            let postfix = Task.repeatString(cycle.integerValue)
+            taskDueDateLabel!.text = "\(task.dueDateString()) \(postfix)"
+        } else {
+            taskDueDateLabel!.text = task.dueDateString()
+        }
+
         taskNameLabel.textColor = task.isDue() ? UIColor.colorTaskNameDue() : UIColor.colorTaskName()
 
         if task.dueDateString() == nil  {

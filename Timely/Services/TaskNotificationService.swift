@@ -34,7 +34,7 @@ class TaskNotificationService {
         if let notifications = UIApplication.sharedApplication().scheduledLocalNotifications {
             for notification : AnyObject in notifications {
                 let note = notification as UILocalNotification
-                if note.userInfo["task-id"] as String == task.taskId {
+                if let taskId: AnyObject = note.userInfo["task-id"] {
                     UIApplication.sharedApplication().cancelLocalNotification(note)
                     NSLog("remove notification for task \(task.name) id: \(task.taskId)")
                 }
@@ -53,7 +53,9 @@ class TaskNotificationService {
 
     class func resetNotificationBadgeCount() {
         if let notifications = UIApplication.sharedApplication().scheduledLocalNotifications {
-            notifications.sort({(obj1, obj2) -> Bool in
+
+
+            let notes = notifications.sorted({(obj1, obj2) -> Bool in
                 let note1 = obj1 as UILocalNotification;
                 let note2 = obj2 as UILocalNotification;
 
@@ -62,7 +64,7 @@ class TaskNotificationService {
 
             var badgeCount = UIApplication.sharedApplication().applicationIconBadgeNumber
             UIApplication.sharedApplication().cancelAllLocalNotifications()
-            for notification : AnyObject in notifications {
+            for notification : AnyObject in notes {
                 badgeCount++
                 let note = notification as UILocalNotification
                 note.applicationIconBadgeNumber = badgeCount

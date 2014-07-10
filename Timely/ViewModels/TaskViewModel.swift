@@ -104,7 +104,7 @@ class TaskViewModel {
             newTask.name = name;
             newTask.cycle = cycle
             if let due = dueDate {
-                newTask.dueDate = due.addTimeInterval(cycle.d * 60*60*24) as NSDate
+                newTask.dueDate = due.dateByAddingTimeInterval(cycle.d * 60*60*24)
             }
             TaskNotificationService.removeNotification(task!)
             context.deleteObject(task)

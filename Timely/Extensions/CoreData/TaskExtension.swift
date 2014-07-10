@@ -39,6 +39,19 @@ extension Task :Printable, Equatable {
         return days > 0 ? "Every \(days) day\(postfix)" : "Never repeat"
     }
 
+    func repeatString() -> String {
+        switch cycle.integerValue {
+        case nil:
+            fallthrough
+        case 0:
+            return "Never Repeat"
+        case 1:
+            return "Repeat Every Day"
+        default:
+            return  "Repeat Every \(cycle) days"
+        }
+    }
+
     override var description: String {
     return "task: \(name), due: \(dueDate.dateTimeStringLong()), repeat: \(cycle)";
     }

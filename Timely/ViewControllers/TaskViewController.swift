@@ -36,6 +36,8 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
             nameField.text = t.name
             if let taskDueDate = t.dueDate {
                 dueDatePicker.date = t.dueDate
+                self.dueDateLabel.text = t.repeatString
+                self.dueDateLabel.textColor = view.tintColor
             }
             repeatLabel.text = t.repeatString
             repeatSteper.value = t.cycle.d
@@ -47,17 +49,11 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
         }
 
         taskViewModel.cycleBinding = { (cycle:Int) -> () in
-            switch cycle {
-            case 0:
-                self.repeatLabel.text = "Never Repeat"
-            case 1:
-                self.repeatLabel.text = "Repeat Every Day"
-            default:
-                self.repeatLabel.text =  "Repeat Every \(cycle) days"
-            }
+            self.repeatLabel.text = self.taskViewModel.repeatString
         }
 
         taskViewModel.dueDateBinding = { (dueDate:NSDate?) -> () in
+
             switch dueDate {
             case let due where due == nil:
                 self.dueDateLabel.text =  "Due Date"
@@ -72,11 +68,10 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
 
     override func viewDidAppear(animated: Bool)  {
         super.viewDidAppear(animated)
-        if taskViewModel {
+        if taskViewModel.taskId == nil {
             nameField.becomeFirstResponder()
         }
     }
-
 
     // # IBActions
     @IBAction func nameFieldChange(textField:UITextField) {
