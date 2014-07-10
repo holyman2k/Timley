@@ -10,11 +10,15 @@
 		6F1265A41953AF8D00104B49 /* TimelyTableViewControllerScrollExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1265A31953AF8D00104B49 /* TimelyTableViewControllerScrollExtension.swift */; };
 		6F2B72E7194D166D0076AB18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B72E6194D166D0076AB18 /* AppDelegate.swift */; };
 		6F2B72EA194D166D0076AB18 /* Timely.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B72E8194D166D0076AB18 /* Timely.xcdatamodeld */; };
-		6F2B72EC194D166D0076AB18 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F2B72EB194D166D0076AB18 /* Images.xcassets */; };
 		6F2B72F8194D166D0076AB18 /* TimelyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B72F7194D166D0076AB18 /* TimelyTests.swift */; };
 		6F2B7302194D16890076AB18 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F2B7301194D16890076AB18 /* Storyboard.storyboard */; };
 		6F2B7305194D19B50076AB18 /* TimelyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B7304194D19B50076AB18 /* TimelyTableViewController.swift */; };
 		6F2B7314194D1D3F0076AB18 /* TimelyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B7313194D1D3F0076AB18 /* TimelyContext.swift */; };
+		6F324BBC196EBB56002D0A38 /* clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F324BBB196EBB56002D0A38 /* clear@2x.png */; };
+		6F324BBE196EBB62002D0A38 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F324BBD196EBB62002D0A38 /* add@2x.png */; };
+		6F324BC0196EBB6C002D0A38 /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F324BBF196EBB6C002D0A38 /* cross@2x.png */; };
+		6F324BC2196EBB77002D0A38 /* tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F324BC1196EBB77002D0A38 /* tick@2x.png */; };
+		6F324BC3196EBBB1002D0A38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F2B72EB194D166D0076AB18 /* Images.xcassets */; };
 		6F4E9D77194E8457003ADA8A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E9D76194E8457003ADA8A /* DateExtension.swift */; };
 		6F520D781952708D00646360 /* DelegateBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F520D771952708D00646360 /* DelegateBridge.m */; };
 		6F6D8C5919622FCC00BC8C6F /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D8C5819622FCC00BC8C6F /* TaskViewModel.swift */; };
@@ -55,6 +59,10 @@
 		6F2B7304194D19B50076AB18 /* TimelyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelyTableViewController.swift; path = ViewControllers/TimelyTableViewController.swift; sourceTree = "<group>"; };
 		6F2B7307194D1AF30076AB18 /* Timely-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Timely-Bridging-Header.h"; sourceTree = "<group>"; };
 		6F2B7313194D1D3F0076AB18 /* TimelyContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelyContext.swift; path = Extensions/TimelyContext.swift; sourceTree = "<group>"; };
+		6F324BBB196EBB56002D0A38 /* clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clear@2x.png"; path = "Images.xcassets/clear.imageset/clear@2x.png"; sourceTree = "<group>"; };
+		6F324BBD196EBB62002D0A38 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add@2x.png"; path = "Images.xcassets/add.imageset/add@2x.png"; sourceTree = "<group>"; };
+		6F324BBF196EBB6C002D0A38 /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cross@2x.png"; path = "Images.xcassets/cross.imageset/cross@2x.png"; sourceTree = "<group>"; };
+		6F324BC1196EBB77002D0A38 /* tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tick@2x.png"; path = "Images.xcassets/tick.imageset/tick@2x.png"; sourceTree = "<group>"; };
 		6F4E9D76194E8457003ADA8A /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = Extensions/DateExtension.swift; sourceTree = "<group>"; };
 		6F520D771952708D00646360 /* DelegateBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateBridge.m; sourceTree = "<group>"; };
 		6F520D79195270D900646360 /* DelegateBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelegateBridge.h; sourceTree = "<group>"; };
@@ -136,6 +144,10 @@
 		6F2B72E4194D166D0076AB18 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6F324BC1196EBB77002D0A38 /* tick@2x.png */,
+				6F324BBF196EBB6C002D0A38 /* cross@2x.png */,
+				6F324BBD196EBB62002D0A38 /* add@2x.png */,
+				6F324BBB196EBB56002D0A38 /* clear@2x.png */,
 				6F2B72E5194D166D0076AB18 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -320,9 +332,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F324BC2196EBB77002D0A38 /* tick@2x.png in Resources */,
+				6F324BBC196EBB56002D0A38 /* clear@2x.png in Resources */,
+				6F324BC3196EBBB1002D0A38 /* Images.xcassets in Resources */,
+				6F324BBE196EBB62002D0A38 /* add@2x.png in Resources */,
 				6FA78EA1195008EF00557863 /* Easter-Bell-icon.png in Resources */,
-				6F2B72EC194D166D0076AB18 /* Images.xcassets in Resources */,
 				6F2B7302194D16890076AB18 /* Storyboard.storyboard in Resources */,
+				6F324BC0196EBB6C002D0A38 /* cross@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
