@@ -63,6 +63,7 @@
 		6F324BBD196EBB62002D0A38 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add@2x.png"; path = "Images.xcassets/add.imageset/add@2x.png"; sourceTree = "<group>"; };
 		6F324BBF196EBB6C002D0A38 /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cross@2x.png"; path = "Images.xcassets/cross.imageset/cross@2x.png"; sourceTree = "<group>"; };
 		6F324BC1196EBB77002D0A38 /* tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tick@2x.png"; path = "Images.xcassets/tick.imageset/tick@2x.png"; sourceTree = "<group>"; };
+		6F324BC4196EBE15002D0A38 /* icon.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = icon.pxm; sourceTree = "<group>"; };
 		6F4E9D76194E8457003ADA8A /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = Extensions/DateExtension.swift; sourceTree = "<group>"; };
 		6F520D771952708D00646360 /* DelegateBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateBridge.m; sourceTree = "<group>"; };
 		6F520D79195270D900646360 /* DelegateBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelegateBridge.h; sourceTree = "<group>"; };
@@ -238,6 +239,7 @@
 		6FA78E9F195008E500557863 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6F324BC4196EBE15002D0A38 /* icon.pxm */,
 				6FA78EA0195008EF00557863 /* Easter-Bell-icon.png */,
 			);
 			name = Assets;
