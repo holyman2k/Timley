@@ -36,8 +36,7 @@ class TaskViewController: UITableViewController, UITextFieldDelegate, UIActionSh
             nameField.text = t.name
             if let taskDueDate = t.dueDate {
                 dueDatePicker.date = t.dueDate
-                self.dueDateLabel.text = t.repeatString
-                self.dueDateLabel.textColor = view.tintColor
+                self.dueDateLabel.text = "due \(t.dueDate)"
             }
             repeatLabel.text = t.repeatString
             repeatSteper.value = t.cycle.d
