@@ -5,4 +5,5 @@
 
 
 #import "Task.h"
+#import "WXReorderTableTableViewController.h"
 #import "DelegateBridge.h"

@@ -12,7 +12,8 @@ extension NSDate {
     func dateTimeStringLong() -> String {
         let pattern = "dd-MM-yyyy";
         if dateString(pattern) == NSDate.date().dateString(pattern) {
-            return "Today"
+            let timeString = dateString("h:mm a")
+            return "Today at \(timeString)"
         }
         return dateString("MMMM d, 'at' h:mm a")
     }

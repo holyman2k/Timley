@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TimelyTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, WXSwipeTableViewCellDelegate {
+class TimelyTableViewController: WXReorderTableTableViewController, WXReorderTableViewDelegate, NSFetchedResultsControllerDelegate, WXSwipeTableViewCellDelegate {
 
     var fetchedResultsController:NSFetchedResultsController
 
@@ -20,28 +20,30 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
     required init(coder aDecoder: NSCoder!)  {
 
         context = TimelyContext.managed();
-        var fetchRequest = Task.fetchRequest([NSSortDescriptor(key: "dueDate", ascending: true)], predicate: nil)
+        var fetchRequest = Task.fetchRequest([NSSortDescriptor(key: "sort", ascending: true)], predicate: nil)
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil);
         super.init(coder: aDecoder);
 
         fetchedResultsController.delegate = self;
     }
 
-    override func viewWillLayoutSubviews() {
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
 
         let iconSize = 20.0
         let iconX = (view.frame.size.width.d - iconSize) / 2.0
 
         addIcon.frame = CGRectMake(iconX.f, -50, iconSize.f, iconSize.f)
         addIcon.image = UIImage(named: "add").imageWithRenderingMode(.AlwaysTemplate)
-        view.addSubview(addIcon);
-    }
-    
-    override func viewDidLoad() {
+        view.addSubview(addIcon)
 
-        super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self.tableView, selector: "reloadData", name: "appDidAppear", object: nil);
         fetchedResultsController.performFetch(nil);
+
+        tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, tableView.frame.size.width)
+
+        reorderDelegate = self;
     }
 
     func controllerWillChangeContent(controller: NSFetchedResultsController!) {
@@ -66,10 +68,47 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
         tableView.endUpdates()
     }
 
+    func swapObjectAtIndexPath(fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
+//        WXTask *fromTask = [self.fetchedResultsController objectAtIndexPath:fromIndexPath];
+//        WXTask *toTask = [self.fetchedResultsController objectAtIndexPath:toIndexPath];
+//
+//        NSNumber *fromTaskSort = fromTask.sort;
+//
+//        fromTask.sort = toTask.sort;
+//        toTask.sort = fromTaskSort;
+//
+//        [[self managedObjectContext] save:nil];
+        var fromTask = fetchedResultsController.objectAtIndexPath(fromIndexPath) as Task
+        var toTask =  fetchedResultsController.objectAtIndexPath(toIndexPath) as Task
+
+        let fromSort = fromTask.sort
+
+        fromTask.sort = toTask.sort
+        toTask.sort = fromSort
+
+        context.save(nil);
+
+    }
+
     func configCellAtIndexPath(indexPath:NSIndexPath, inout cell:TimelyTableViewCell) {
         cell.delegate = self;
         var task = fetchedResultsController.objectAtIndexPath(indexPath) as Task;
-        cell.setTask(task)
+
+        if let reorderIndexPath = indexPathOfReorderingCell {
+            if indexPath.row == indexPathOfReorderingCell.row {
+                cell.taskNameLabel.text = nil
+                cell.taskDueDateLabel.text = nil
+                return
+            }
+        }
+
+        cell.taskNameLabel.text = task.name;
+        cell.taskDueDateLabel.text = task.dueDateString()
+
+        cell.taskNameLabel.textColor = task.isDue() ? UIColor.colorTaskNameDue() : UIColor.colorTaskName()
+
+        cell.taskNameTopConstraint.constant = task.dueDateString() == nil ? 20 : 10;
+        cell.updateConstraints()
     }
 
     // #pragma mark - Table view data source

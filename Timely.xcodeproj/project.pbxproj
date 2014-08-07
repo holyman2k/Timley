@@ -21,6 +21,7 @@
 		6F324BC3196EBBB1002D0A38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F2B72EB194D166D0076AB18 /* Images.xcassets */; };
 		6F4E9D77194E8457003ADA8A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4E9D76194E8457003ADA8A /* DateExtension.swift */; };
 		6F520D781952708D00646360 /* DelegateBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F520D771952708D00646360 /* DelegateBridge.m */; };
+		6F5F926E19934D9C0018FA43 /* WXReorderTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F926D19934D9C0018FA43 /* WXReorderTableTableViewController.m */; };
 		6F6D8C5919622FCC00BC8C6F /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D8C5819622FCC00BC8C6F /* TaskViewModel.swift */; };
 		6F6D8C5B1962346F00BC8C6F /* TaskNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D8C5A1962346F00BC8C6F /* TaskNotificationService.swift */; };
 		6F995992195D57DA00A155E7 /* ConversionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F995991195D57DA00A155E7 /* ConversionExtension.swift */; };
@@ -68,6 +69,8 @@
 		6F4E9D76194E8457003ADA8A /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = Extensions/DateExtension.swift; sourceTree = "<group>"; };
 		6F520D771952708D00646360 /* DelegateBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateBridge.m; sourceTree = "<group>"; };
 		6F520D79195270D900646360 /* DelegateBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelegateBridge.h; sourceTree = "<group>"; };
+		6F5F926C19934D9C0018FA43 /* WXReorderTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXReorderTableTableViewController.h; sourceTree = "<group>"; };
+		6F5F926D19934D9C0018FA43 /* WXReorderTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXReorderTableTableViewController.m; sourceTree = "<group>"; };
 		6F6D8C5819622FCC00BC8C6F /* TaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskViewModel.swift; path = ViewModels/TaskViewModel.swift; sourceTree = "<group>"; };
 		6F6D8C5A1962346F00BC8C6F /* TaskNotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskNotificationService.swift; path = Services/TaskNotificationService.swift; sourceTree = "<group>"; };
 		6F70D9071963A33F0058CA8A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
@@ -107,7 +110,7 @@
 		6F2B72D8194D166D0076AB18 = {
 			isa = PBXGroup;
 			children = (
-				6FA3A0A7197F913E0013F030 /* CoreData.framework */,
+				6F5F926B19934D900018FA43 /* Library */,
 				6F70D9071963A33F0058CA8A /* MyPlayground.playground */,
 				6FA78E9F195008E500557863 /* Assets */,
 				6F2B72E3194D166D0076AB18 /* Timely */,
@@ -222,6 +225,16 @@
 				6FEC35C3194ED181002D374C /* TaskExtension.swift */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		6F5F926B19934D900018FA43 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F926C19934D9C0018FA43 /* WXReorderTableTableViewController.h */,
+				6F5F926D19934D9C0018FA43 /* WXReorderTableTableViewController.m */,
+				6FA3A0A7197F913E0013F030 /* CoreData.framework */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 		6F6D8C5719622FAB00BC8C6F /* ViewModels */ = {
@@ -365,6 +378,7 @@
 				6FEC35C0194ECC9E002D374C /* Task.m in Sources */,
 				6F2B7314194D1D3F0076AB18 /* TimelyContext.swift in Sources */,
 				6F2B7305194D19B50076AB18 /* TimelyTableViewController.swift in Sources */,
+				6F5F926E19934D9C0018FA43 /* WXReorderTableTableViewController.m in Sources */,
 				6F520D781952708D00646360 /* DelegateBridge.m in Sources */,
 				6F6D8C5B1962346F00BC8C6F /* TaskNotificationService.swift in Sources */,
 				6F1265A41953AF8D00104B49 /* TimelyTableViewControllerScrollExtension.swift in Sources */,

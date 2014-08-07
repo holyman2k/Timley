@@ -27,22 +27,9 @@ class TimelyTableViewCell: WXSwipeTableViewCell {
         self.contentView.backgroundColor = UIColor.whiteColor()
     }
 
-    func setTask(task:Task) {
+    override func prepareForReuse() {
+        super.prepareForReuse()
 
-        taskNameLabel!.text = task.name;
-
-//        if let cycle = task.cycle {
-//            let postfix = Task.repeatString(cycle.integerValue)
-//            taskDueDateLabel!.text = "\(task.dueDateString()!) \(postfix)"
-//        } else {
-        taskDueDateLabel!.text = task.dueDateString()
-//        }
-
-        taskNameLabel.textColor = task.isDue() ? UIColor.colorTaskNameDue() : UIColor.colorTaskName()
-
-        if task.dueDateString() == nil  {
-            taskNameTopConstraint.constant = 20;
-            self.updateConstraints()
-        }
+        self.contentView.backgroundColor = UIColor.whiteColor()
     }
 }

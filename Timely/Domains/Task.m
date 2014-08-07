@@ -15,5 +15,6 @@
 @dynamic dueDate;
 @dynamic name;
 @dynamic taskId;
+@dynamic sort;
 
 @end

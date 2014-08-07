@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSDate * dueDate;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * taskId;
+@property (nonatomic, retain) NSNumber * sort;
 
 @end

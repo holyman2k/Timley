@@ -69,6 +69,7 @@ class TaskViewModel {
         if self.task == nil {
             t = Task.createInContext(context) as Task
             t.generateTaskId()
+            t.sort = lastTaskSort(context) + 1
         } else {
             t = task;
             TaskNotificationService.removeNotification(t)
@@ -104,6 +105,7 @@ class TaskViewModel {
             newTask.generateTaskId()
             newTask.name = name;
             newTask.cycle = cycle
+            newTask.sort = lastTaskSort(context) + 1
             if let due = dueDate {
                 newTask.dueDate = due.dateByAddingTimeInterval(cycle.d * 60*60*24)
             }
@@ -120,6 +122,17 @@ class TaskViewModel {
             context.deleteObject(task)
             context.save(nil)
         }
+    }
 
+    private func lastTaskSort(context:NSManagedObjectContext) -> Int {
+        let fetchReqest = Task.fetchRequest([NSSortDescriptor(key: "sort", ascending: false)], predicate: nil)
+        fetchReqest.fetchLimit = 1
+
+        let tasks = context.executeFetchRequest(fetchReqest, error: nil) as Array<Task>
+
+        if tasks.count > 0 {
+            return tasks[0].sort;
+        }
+        return 0
     }
 }
