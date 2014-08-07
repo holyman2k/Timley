@@ -48,7 +48,7 @@ class TaskNotificationService {
     }
 
     class func resetBadge(context:NSManagedObjectContext) {
-        var predicate = NSPredicate(format: "dueDate < %@", NSDate.date())
+        var predicate = NSPredicate(format: "dueDate < %@ and completed = false", NSDate.date())
         var request = Task.fetchRequest(nil, predicate: predicate);
 
         var count = context.countForFetchRequest(request, error: nil)
@@ -57,8 +57,10 @@ class TaskNotificationService {
     }
 
     class func resetNotificationBadgeCount() {
+
+        NSLog("reset notification")
+
         if let notifications = UIApplication.sharedApplication().scheduledLocalNotifications {
-            NSLog("notification count \(notifications.count)")
             let notes = notifications.sorted({(obj1, obj2) -> Bool in
                 let note1 = obj1 as UILocalNotification;
                 let note2 = obj2 as UILocalNotification;

@@ -20,12 +20,6 @@ class TimelyTableViewController: WXReorderTableTableViewController, WXReorderTab
     required init(coder aDecoder: NSCoder!)  {
 
         context = TimelyContext.managed();
-
-//        let fetchRequest = NSFetchRequest(entityName: "Task")
-//        fetchRequest.predicate = NSPredicate(format: "completed = %@", false)
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "sort", ascending: true)]
-
-
         var fetchRequest = Task.fetchRequest([NSSortDescriptor(key: "sort", ascending: true)], predicate: NSPredicate(format: "completed = %@", false))
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil);
         super.init(coder: aDecoder);
@@ -50,6 +44,11 @@ class TimelyTableViewController: WXReorderTableTableViewController, WXReorderTab
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, tableView.frame.size.width)
 
         reorderDelegate = self;
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
     func controllerWillChangeContent(controller: NSFetchedResultsController!) {

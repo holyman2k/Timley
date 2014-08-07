@@ -30,6 +30,6 @@ class TimelyTableViewCell: WXSwipeTableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
 
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.whiteColor()
     }
 }
