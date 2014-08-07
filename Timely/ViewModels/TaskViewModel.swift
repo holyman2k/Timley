@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class TaskViewModel {
 
@@ -70,20 +71,24 @@ class TaskViewModel {
             t = Task.createInContext(context) as Task
             t.generateTaskId()
             t.sort = lastTaskSort(context) + 1
+            t.completed = false
         } else {
             t = task;
             TaskNotificationService.removeNotification(t)
         }
 
-        t.name = name;
-        t.dueDate = dueDate
-        t.cycle = cycle
+        t.name = name!;
+        if let d = dueDate {
+            t.dueDate = d;
+            t.cycle = cycle
+        }
 
         context.save(nil)
 
         TaskNotificationService.createNotification(t)
         TaskNotificationService.resetBadge(context)
         TaskNotificationService.resetNotificationBadgeCount()
+        task = t
     }
 
     func delete(context:NSManagedObjectContext) {
@@ -103,14 +108,15 @@ class TaskViewModel {
         if cycle > 0 {
             var newTask:Task = Task.createInContext(context);
             newTask.generateTaskId()
-            newTask.name = name;
+            newTask.name = name!;
             newTask.cycle = cycle
             newTask.sort = lastTaskSort(context) + 1
+            newTask.completed = false
             if let due = dueDate {
                 newTask.dueDate = due.dateByAddingTimeInterval(cycle.d * 60*60*24)
             }
             TaskNotificationService.removeNotification(task!)
-            context.deleteObject(task)
+            task!.completed = true
             context.save(nil)
             TaskNotificationService.createNotification(newTask)
             TaskNotificationService.resetBadge(context)
@@ -119,7 +125,7 @@ class TaskViewModel {
             TaskNotificationService.removeNotification(task!)
             TaskNotificationService.resetBadge(context)
             TaskNotificationService.resetNotificationBadgeCount()
-            context.deleteObject(task)
+            task!.completed = true
             context.save(nil)
         }
     }

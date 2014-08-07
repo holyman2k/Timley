@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension Task :Printable, Equatable {
 
@@ -15,7 +16,7 @@ extension Task :Printable, Equatable {
     }
 
     func isDue() -> Bool {
-        if let due = dueDate {
+        if dueDate != nil {
             return dueDate.timeIntervalSince1970 < NSDate.date().timeIntervalSince1970
         }
         return false
@@ -52,11 +53,11 @@ extension Task :Printable, Equatable {
         }
     }
 
-override public var description: String {
-    return "task: \(name), due: \(dueDate.dateTimeStringLong()), repeat: \(cycle)";
+    override var description: String {
+        return "task: \(name), due: \(dueDate.dateTimeStringLong()), repeat: \(cycle)";
     }
 }
 
-public func ==(lhs: Task, rhs: Task) -> Bool {
+func ==(lhs: Task, rhs: Task) -> Bool {
     return lhs.name == rhs.name && lhs.cycle == rhs.cycle && lhs.dueDate == rhs.dueDate
 }

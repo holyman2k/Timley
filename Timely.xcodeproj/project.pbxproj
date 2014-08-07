@@ -26,14 +26,14 @@
 		6F6D8C5B1962346F00BC8C6F /* TaskNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6D8C5A1962346F00BC8C6F /* TaskNotificationService.swift */; };
 		6F995992195D57DA00A155E7 /* ConversionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F995991195D57DA00A155E7 /* ConversionExtension.swift */; };
 		6F9FC398194D233800A0C9C5 /* ManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FC397194D233800A0C9C5 /* ManagedObjectExtension.swift */; };
-		6FA3A0A8197F913E0013F030 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA3A0A7197F913E0013F030 /* CoreData.framework */; };
 		6FA78EA1195008EF00557863 /* Easter-Bell-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FA78EA0195008EF00557863 /* Easter-Bell-icon.png */; };
 		6FBB6F98195A957D000FF112 /* WXSwipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBB6F97195A957D000FF112 /* WXSwipeTableViewCell.swift */; };
 		6FBB6F9B195A95D9000FF112 /* TimelyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBB6F9A195A95D9000FF112 /* TimelyTableViewCell.swift */; };
 		6FD444AD194D886300868FE7 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD444AC194D886300868FE7 /* TaskViewController.swift */; };
-		6FEC35C0194ECC9E002D374C /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FEC35BF194ECC9E002D374C /* Task.m */; };
 		6FEC35C4194ED181002D374C /* TaskExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEC35C3194ED181002D374C /* TaskExtension.swift */; };
 		6FEC35C6194ED190002D374C /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEC35C5194ED190002D374C /* ManagedObjectContext.swift */; };
+		6FF7F7A519943A0F008E3E29 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF7F7A419943A0F008E3E29 /* Task.swift */; };
+		6FF7F7A719943A6E008E3E29 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF7F7A619943A6E008E3E29 /* CoreData.framework */; };
 		6FFD6DF3195CF7A500662F52 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD6DF2195CF7A500662F52 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,15 +76,15 @@
 		6F70D9071963A33F0058CA8A /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		6F995991195D57DA00A155E7 /* ConversionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversionExtension.swift; path = Extensions/ConversionExtension.swift; sourceTree = "<group>"; };
 		6F9FC397194D233800A0C9C5 /* ManagedObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectExtension.swift; path = Extensions/ManagedObjectExtension.swift; sourceTree = "<group>"; };
-		6FA3A0A7197F913E0013F030 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6FA78EA0195008EF00557863 /* Easter-Bell-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Easter-Bell-icon.png"; sourceTree = "<group>"; };
 		6FBB6F97195A957D000FF112 /* WXSwipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXSwipeTableViewCell.swift; sourceTree = "<group>"; };
 		6FBB6F9A195A95D9000FF112 /* TimelyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimelyTableViewCell.swift; path = Views/TimelyTableViewCell.swift; sourceTree = "<group>"; };
 		6FD444AC194D886300868FE7 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskViewController.swift; path = ViewControllers/TaskViewController.swift; sourceTree = "<group>"; };
-		6FEC35BE194ECC9E002D374C /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = Domains/Task.h; sourceTree = "<group>"; };
-		6FEC35BF194ECC9E002D374C /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = Domains/Task.m; sourceTree = "<group>"; };
 		6FEC35C3194ED181002D374C /* TaskExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskExtension.swift; path = Extensions/CoreData/TaskExtension.swift; sourceTree = "<group>"; };
 		6FEC35C5194ED190002D374C /* ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectContext.swift; path = Extensions/ManagedObjectContext.swift; sourceTree = "<group>"; };
+		6FF7F79F1994384C008E3E29 /* Timely 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Timely 2.xcdatamodel"; sourceTree = "<group>"; };
+		6FF7F7A419943A0F008E3E29 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Domain/Task.swift; sourceTree = "<group>"; };
+		6FF7F7A619943A6E008E3E29 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6FFD6DF2195CF7A500662F52 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Extensions/UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FA3A0A8197F913E0013F030 /* CoreData.framework in Frameworks */,
+				6FF7F7A719943A6E008E3E29 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +110,7 @@
 		6F2B72D8194D166D0076AB18 = {
 			isa = PBXGroup;
 			children = (
+				6FF7F7A619943A6E008E3E29 /* CoreData.framework */,
 				6F5F926B19934D900018FA43 /* Library */,
 				6F70D9071963A33F0058CA8A /* MyPlayground.playground */,
 				6FA78E9F195008E500557863 /* Assets */,
@@ -199,8 +200,7 @@
 		6F2B730E194D1AFC0076AB18 /* Domains */ = {
 			isa = PBXGroup;
 			children = (
-				6FEC35BE194ECC9E002D374C /* Task.h */,
-				6FEC35BF194ECC9E002D374C /* Task.m */,
+				6FF7F7A419943A0F008E3E29 /* Task.swift */,
 			);
 			name = Domains;
 			sourceTree = "<group>";
@@ -210,8 +210,8 @@
 			children = (
 				6F2B7310194D1B800076AB18 /* CoreData */,
 				6FEC35C5194ED190002D374C /* ManagedObjectContext.swift */,
-				6F2B7313194D1D3F0076AB18 /* TimelyContext.swift */,
 				6F9FC397194D233800A0C9C5 /* ManagedObjectExtension.swift */,
+				6F2B7313194D1D3F0076AB18 /* TimelyContext.swift */,
 				6F4E9D76194E8457003ADA8A /* DateExtension.swift */,
 				6FFD6DF2195CF7A500662F52 /* UIColorExtension.swift */,
 				6F995991195D57DA00A155E7 /* ConversionExtension.swift */,
@@ -232,7 +232,6 @@
 			children = (
 				6F5F926C19934D9C0018FA43 /* WXReorderTableTableViewController.h */,
 				6F5F926D19934D9C0018FA43 /* WXReorderTableTableViewController.m */,
-				6FA3A0A7197F913E0013F030 /* CoreData.framework */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -375,7 +374,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FEC35C0194ECC9E002D374C /* Task.m in Sources */,
 				6F2B7314194D1D3F0076AB18 /* TimelyContext.swift in Sources */,
 				6F2B7305194D19B50076AB18 /* TimelyTableViewController.swift in Sources */,
 				6F5F926E19934D9C0018FA43 /* WXReorderTableTableViewController.m in Sources */,
@@ -383,6 +381,7 @@
 				6F6D8C5B1962346F00BC8C6F /* TaskNotificationService.swift in Sources */,
 				6F1265A41953AF8D00104B49 /* TimelyTableViewControllerScrollExtension.swift in Sources */,
 				6FEC35C4194ED181002D374C /* TaskExtension.swift in Sources */,
+				6FF7F7A519943A0F008E3E29 /* Task.swift in Sources */,
 				6F6D8C5919622FCC00BC8C6F /* TaskViewModel.swift in Sources */,
 				6F4E9D77194E8457003ADA8A /* DateExtension.swift in Sources */,
 				6F2B72E7194D166D0076AB18 /* AppDelegate.swift in Sources */,
@@ -596,9 +595,10 @@
 		6F2B72E8194D166D0076AB18 /* Timely.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				6FF7F79F1994384C008E3E29 /* Timely 2.xcdatamodel */,
 				6F2B72E9194D166D0076AB18 /* Timely.xcdatamodel */,
 			);
-			currentVersion = 6F2B72E9194D166D0076AB18 /* Timely.xcdatamodel */;
+			currentVersion = 6FF7F79F1994384C008E3E29 /* Timely 2.xcdatamodel */;
 			path = Timely.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

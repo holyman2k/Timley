@@ -6,15 +6,17 @@
 //  Copyright (c) 2014 Charlie Wu. All rights reserved.
 //
 
+import CoreData
+
 class TaskNotificationService {
 
     class func createNotification(task:Task) {
         assert(task != nil, "")
         assert(task.taskId != nil, "")
 
-        if let due = task.dueDate {
+        if task.dueDate != nil {
             var notification = UILocalNotification()
-            notification.fireDate = due
+            notification.fireDate = task.dueDate
             notification.alertAction = "OK"
             notification.alertBody = "\(task.name) is due"
             notification.timeZone = NSTimeZone.defaultTimeZone()
