@@ -15,11 +15,11 @@ class TaskNotificationService {
         if let due = task.dueDate {
             var notification = UILocalNotification()
             notification.fireDate = due
-//            notification.fireDate = NSDate.date().addTimeInterval(10) as NSDate
             notification.alertAction = "OK"
             notification.alertBody = "\(task.name) is due"
             notification.timeZone = NSTimeZone.defaultTimeZone()
             notification.userInfo = ["task-id" : task.taskId];
+            notification.soundName = UILocalNotificationDefaultSoundName;
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             NSLog("create notification for task \(self) with info \(task.taskId) at date: \(notification.fireDate.dateTimeStringLong())")
         } else {
@@ -34,9 +34,12 @@ class TaskNotificationService {
         if let notifications = UIApplication.sharedApplication().scheduledLocalNotifications {
             for notification : AnyObject in notifications {
                 let note = notification as UILocalNotification
-                if let taskId: AnyObject = note.userInfo["task-id"] {
-                    UIApplication.sharedApplication().cancelLocalNotification(note)
-                    NSLog("remove notification for task \(task.name) id: \(task.taskId)")
+                if let taskId: AnyObject = note.userInfo ["task-id"] {
+                    let id = taskId as String
+                    if id == task.taskId {
+                        UIApplication.sharedApplication().cancelLocalNotification(note)
+                        NSLog("remove notification for task \(task.name) id: \(task.taskId)")
+                    }
                 }
             }
         }
@@ -53,8 +56,7 @@ class TaskNotificationService {
 
     class func resetNotificationBadgeCount() {
         if let notifications = UIApplication.sharedApplication().scheduledLocalNotifications {
-
-
+            NSLog("notification count \(notifications.count)")
             let notes = notifications.sorted({(obj1, obj2) -> Bool in
                 let note1 = obj1 as UILocalNotification;
                 let note2 = obj2 as UILocalNotification;
@@ -69,6 +71,7 @@ class TaskNotificationService {
                 let note = notification as UILocalNotification
                 note.applicationIconBadgeNumber = badgeCount
                 UIApplication.sharedApplication().scheduleLocalNotification(note)
+                NSLog("set notification \(note.alertBody), due \(note.fireDate.dateTimeStringLong()), badge count \(note.applicationIconBadgeNumber)")
 
             }
         }

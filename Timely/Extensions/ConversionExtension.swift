@@ -12,12 +12,6 @@ extension Double {
     var f:CGFloat {
         return CGFloat(self)
     }
-    @conversion func __convert(i: Int=0) -> Double {
-        return Double(i)
-    }
-    @conversion func __convert(i: CGFloat=0) -> Double {
-        return Double(i)
-    }
 }
 
 extension CGFloat {

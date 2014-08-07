@@ -10,10 +10,10 @@ import UIKit
 
 class TimelyTableViewCell: WXSwipeTableViewCell {
 
-    @IBOutlet var taskNameTopConstraint: NSLayoutConstraint
-    @IBOutlet var taskNameLabel:UILabel;
+    @IBOutlet var taskNameTopConstraint: NSLayoutConstraint!
+    @IBOutlet var taskNameLabel:UILabel!;
 
-    @IBOutlet var taskDueDateLabel:UILabel;
+    @IBOutlet var taskDueDateLabel:UILabel!;
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -31,12 +31,12 @@ class TimelyTableViewCell: WXSwipeTableViewCell {
 
         taskNameLabel!.text = task.name;
 
-        if let cycle = task.cycle {
-            let postfix = Task.repeatString(cycle.integerValue)
-            taskDueDateLabel!.text = "\(task.dueDateString()) \(postfix)"
-        } else {
-            taskDueDateLabel!.text = task.dueDateString()
-        }
+//        if let cycle = task.cycle {
+//            let postfix = Task.repeatString(cycle.integerValue)
+//            taskDueDateLabel!.text = "\(task.dueDateString()!) \(postfix)"
+//        } else {
+        taskDueDateLabel!.text = task.dueDateString()
+//        }
 
         taskNameLabel.textColor = task.isDue() ? UIColor.colorTaskNameDue() : UIColor.colorTaskName()
 

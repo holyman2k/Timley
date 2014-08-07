@@ -17,7 +17,7 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
 
     let addIcon = UIImageView()
 
-    init(coder aDecoder: NSCoder!)  {
+    required init(coder aDecoder: NSCoder!)  {
 
         context = TimelyContext.managed();
         var fetchRequest = Task.fetchRequest([NSSortDescriptor(key: "dueDate", ascending: true)], predicate: nil)
@@ -51,11 +51,11 @@ class TimelyTableViewController: UITableViewController, NSFetchedResultsControll
     func controller(controller: NSFetchedResultsController!, didChangeObject anObject: AnyObject!, atIndexPath indexPath: NSIndexPath!, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath!) {
 
         switch type {
-        case NSFetchedResultsChangeInsert:
+        case .Insert:
             tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-        case NSFetchedResultsChangeDelete:
+        case .Delete:
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-        case NSFetchedResultsChangeUpdate:()
+        case .Update:
             var cell = tableView.cellForRowAtIndexPath(indexPath) as TimelyTableViewCell
             configCellAtIndexPath(indexPath, cell: &cell)
         default: ()

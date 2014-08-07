@@ -52,11 +52,11 @@ extension Task :Printable, Equatable {
         }
     }
 
-    override var description: String {
+override public var description: String {
     return "task: \(name), due: \(dueDate.dateTimeStringLong()), repeat: \(cycle)";
     }
 }
 
-func ==(lhs: Task, rhs: Task) -> Bool {
+public func ==(lhs: Task, rhs: Task) -> Bool {
     return lhs.name == rhs.name && lhs.cycle == rhs.cycle && lhs.dueDate == rhs.dueDate
 }

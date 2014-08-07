@@ -10,29 +10,29 @@
 	<string>Timely</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B21B7787-4CFC-4C7F-91F5-74DE44FB4DC4</key>
+		<key>F9D5C302FACA0ECBE6821DAB770A15A031454030</key>
 		<string>ssh://github.com/holyman2k/Timley.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Timely.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B21B7787-4CFC-4C7F-91F5-74DE44FB4DC4</key>
+		<key>F9D5C302FACA0ECBE6821DAB770A15A031454030</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/holyman2k/Timley.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B21B7787-4CFC-4C7F-91F5-74DE44FB4DC4</string>
+	<string>F9D5C302FACA0ECBE6821DAB770A15A031454030</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B21B7787-4CFC-4C7F-91F5-74DE44FB4DC4</string>
+			<string>F9D5C302FACA0ECBE6821DAB770A15A031454030</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Timely</string>
 		</dict>

@@ -91,6 +91,7 @@ class TaskViewModel {
             TaskNotificationService.removeNotification(t)
             context.deleteObject(t)
             TaskNotificationService.resetBadge(context)
+            context.save(nil)
         }
     }
 

@@ -10,6 +10,10 @@ import Foundation
 
 extension NSDate {
     func dateTimeStringLong() -> String {
+        let pattern = "dd-MM-yyyy";
+        if dateString(pattern) == NSDate.date().dateString(pattern) {
+            return "Today"
+        }
         return dateString("MMMM d, 'at' h:mm a")
     }
 

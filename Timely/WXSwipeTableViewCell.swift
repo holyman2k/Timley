@@ -74,25 +74,28 @@ class WXSwipeTableViewCell: UITableViewCell {
     override func layoutSubviews()  {
         super.layoutSubviews();
 
-        swipeGesture = UIPanGestureRecognizer(target: self, action: "gestureHandle:")
-        swipeGesture!.delegate = self;
-        self.addGestureRecognizer(swipeGesture)
+        if imageViewLeft == nil {
 
-        let iconSize = 20.0
-        let iconPadding = 18.0
-        let posY = (frame.size.height.d - iconSize) / 2.0
-        let rectLeft = CGRectMake(-iconSize.f - iconPadding.f, posY.f, iconSize.f, iconSize.f)
-        imageViewLeft = UIImageView(frame: rectLeft)
-        imageViewLeft!.backgroundColor = UIColor.clearColor();
-        imageViewLeft!.tintColor = UIColor.whiteColor();
+            swipeGesture = UIPanGestureRecognizer(target: self, action: "gestureHandle:")
+            swipeGesture!.delegate = self;
+            self.addGestureRecognizer(swipeGesture!)
 
-        let rectRight = CGRectMake(frame.size.width + iconPadding.f, posY.f, iconSize.f, iconSize.f)
-        imageViewRight = UIImageView(frame: rectRight)
-        imageViewRight!.backgroundColor = UIColor.clearColor();
-        imageViewRight!.tintColor = UIColor.whiteColor();
+            let iconSize = 20.0
+            let iconPadding = 18.0
+            let posY = (frame.size.height.d - iconSize) / 2.0
+            let rectLeft = CGRectMake(-iconSize.f - iconPadding.f, posY.f, iconSize.f, iconSize.f)
+            imageViewLeft = UIImageView(frame: rectLeft)
+            imageViewLeft!.backgroundColor = UIColor.clearColor();
+            imageViewLeft!.tintColor = UIColor.whiteColor();
 
-        contentView.addSubview(imageViewLeft)
-        contentView.addSubview(imageViewRight)
+            let rectRight = CGRectMake(frame.size.width + iconPadding.f, posY.f, iconSize.f, iconSize.f)
+            imageViewRight = UIImageView(frame: rectRight)
+            imageViewRight!.backgroundColor = UIColor.clearColor();
+            imageViewRight!.tintColor = UIColor.whiteColor();
+
+            contentView.addSubview(imageViewLeft!)
+            contentView.addSubview(imageViewRight!)
+        }
     }
 
     override func prepareForReuse()  {
